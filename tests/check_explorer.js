@@ -115,6 +115,17 @@ const expect = (name, ok, extra = '') => { console.log((ok ? 'PASS ' : 'FAIL ') 
   await b.click('#uc-open-board');
   expect('advisor: the new tickets show up on the Jira board', await b.eval('document.querySelectorAll("#jr-board .tk").length') === pl.stories.length && await b.eval('document.querySelector("#jr-project").value === UC.projectId'));
 
+  // looks: Studio (default) and Modern
+  expect('look: Studio is the default, Modern is one click away', await b.eval('document.documentElement.dataset.skin') === 'studio');
+  await b.eval('window.scrollTo(0, 0)'); await b.click('.skin button[data-skin="modern"]');
+  const mod = await b.eval('(() => { const nav = getComputedStyle(document.querySelector(".tabs")); return { skin: document.documentElement.dataset.skin, dir: nav.flexDirection, pos: nav.position, groups: [...document.querySelectorAll(".tab[data-group]")].map(t => t.dataset.group).join(",") }; })()');
+  expect('look: Modern switches to a sidebar with grouped navigation', mod.skin === 'modern' && mod.dir === 'column' && mod.groups.split(',').sort().join() === 'Analyse,Connect,Explore,Plan', JSON.stringify(mod));
+  expect('look: Modern keeps every view working (graph still drawn)', await b.eval('document.querySelectorAll("#svg-layers .node").length') > 70);
+  await b.eval('document.documentElement.dataset.theme = "dark"');
+  expect('look: Modern has its own dark palette', await b.eval('getComputedStyle(document.body).backgroundColor') === 'rgb(10, 17, 31)');
+  await b.eval('delete document.documentElement.dataset.theme'); await b.click('.skin button[data-skin="studio"]');
+  expect('look: switching back restores Studio', await b.eval('document.documentElement.dataset.skin') === 'studio' && await b.eval('getComputedStyle(document.querySelector(".tabs")).flexDirection') === 'row');
+
   // reset
   await b.click('#reset-demo');
   expect('reset restores the demo', await b.eval('D.person.length === 36 && D.project.length === 12'));

@@ -1,20 +1,22 @@
 // Records short, real screen clips of the explorer for the pitch deck (headless Chrome + ffmpeg).
-// Run:  node scripts/record_clips.js [clip ...]      clips: layers networks gaps econ leaver onboard usecase jira
+// Run:  node scripts/record_clips.js [clip ...]      (SKIN=modern for the Modern look)      clips: layers networks gaps econ leaver onboard usecase jira
 const path = require('path');
 const fs = require('fs');
 const { launch, sleep } = require('./cdp.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const OUT = path.join(ROOT, 'deck', 'clips');
+const SKIN = process.env.SKIN === 'modern' ? 'modern' : 'studio';          // SKIN=modern -> deck/clips-modern
+const OUT = path.join(ROOT, 'deck', SKIN === 'modern' ? 'clips-modern' : 'clips');
+const [VW, VH] = SKIN === 'modern' ? [1440, 900] : [1280, 800];             // same 16:10 ratio; the sidebar layout needs the extra width
 const URL = 'file://' + ROOT + '/viz/maieutica-explorer.html';
 fs.mkdirSync(OUT, { recursive: true });
 
 async function open(tab, scroll = 0, pace = 0.55) {
-  const b = await launch({ width: 1280, height: 800 });
-  await b.goto(`${URL}?pace=${pace}#${tab}`);
+  const b = await launch({ width: VW, height: VH });
+  await b.goto(`${URL}?pace=${pace}&skin=${SKIN}#${tab}`);
   await b.waitFor('document.querySelectorAll("#svg-layers .node").length > 50');
   await b.cursorOverlay(); await sleep(400);
-  await b.eval(`window.scrollTo(0, ${scroll})`); await sleep(500);
+  await b.eval(`window.scrollTo(0, ${SKIN === 'modern' ? Math.max(0, scroll - 20) : scroll})`); await sleep(500);
   b.cursor = { x: 1000, y: 120 };
   await b.eval('document.dispatchEvent(new MouseEvent("mousemove", {clientX: 1000, clientY: 120}))');
   return b;

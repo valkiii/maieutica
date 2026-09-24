@@ -4,17 +4,20 @@
       <span class="brandmark"><img class="logo" src="__LOGO_128__" alt="" width="40" height="40"><h1>Maieutica</h1></span>
       <p class="tag">Draw out what your organisation already knows.</p>
     </div>
-    <p class="demo" id="demo-note"></p>
+    <div class="hdr-right">
+      <p class="demo" id="demo-note"></p>
+      <div class="skin" role="group" aria-label="Look"><button type="button" data-skin="studio" aria-pressed="true">Studio</button><button type="button" data-skin="modern" aria-pressed="false">Modern</button></div>
+    </div>
   </header>
 
   <nav class="tabs" role="tablist" aria-label="Views">
-    <button class="tab" role="tab" id="t-layers" aria-controls="v-layers" aria-selected="true">The four layers</button>
+    <button class="tab" role="tab" data-group="Explore" id="t-layers" aria-controls="v-layers" aria-selected="true">The four layers</button>
     <button class="tab" role="tab" id="t-net" aria-controls="v-net" aria-selected="false">Networks<small>3 graphs</small></button>
-    <button class="tab" role="tab" id="t-gaps" aria-controls="v-gaps" aria-selected="false">Gaps &amp; alignment</button>
+    <button class="tab" role="tab" data-group="Analyse" id="t-gaps" aria-controls="v-gaps" aria-selected="false">Gaps &amp; alignment</button>
     <button class="tab" role="tab" id="t-econ" aria-controls="v-econ" aria-selected="false">Portfolio economics</button>
     <button class="tab" role="tab" id="t-leaver" aria-controls="v-leaver" aria-selected="false">If someone leaves</button>
-    <button class="tab" role="tab" id="t-onboard" aria-controls="v-onboard" aria-selected="false">Onboarding chat</button>
-    <button class="tab" role="tab" id="t-usecase" aria-controls="v-usecase" aria-selected="false">Use-case advisor</button>
+    <button class="tab" role="tab" data-group="Connect" id="t-onboard" aria-controls="v-onboard" aria-selected="false">Onboarding chat</button>
+    <button class="tab" role="tab" data-group="Plan" id="t-usecase" aria-controls="v-usecase" aria-selected="false">Use-case advisor</button>
     <button class="tab" role="tab" id="t-jira" aria-controls="v-jira" aria-selected="false">Jira / Kanban</button>
   </nav>
 

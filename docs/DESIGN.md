@@ -167,6 +167,14 @@ Code: `integrations/boards.py` (pure functions, plus `JiraClient`). UI: the Jira
 
 **Privacy.** Board data is work data about people. Keep the same rules as elsewhere: read-only by default, explicit sources, no ranking of individuals by ticket counts. "Observed allocation" is a planning check against the plan, not a productivity score, and should not be shown as one.
 
+## Two looks: Studio and Modern
+
+One code base, two visual identities, switchable at any time (the **Studio / Modern** control in the explorer header, the **T** key in the deck).
+* **Studio**: top tabs, cool grey ground, Bricolage Grotesque + IBM Plex; the deck is dark.
+* **Modern**: left sidebar with grouped navigation (Explore, Analyse, Plan, Connect), white cards with soft depth on a cool ground, navy and mint to match the logo, Manrope + Geist. It has its own light and dark palettes. The deck is light with navy cover and closing slides.
+* Implementation: everything is driven by `<html data-skin="...">`. Colours, fonts and radii are tokens, the Modern layout is a CSS-only override (grid + `display: contents`), and there is no duplicated markup. A tiny inline script sets the look before first paint (URL `?skin=` > saved choice > build default).
+* `scripts/build_viz.py` writes both `maieutica-explorer.html` (opens in Studio) and `maieutica-explorer-modern.html` (opens in Modern); `scripts/build_deck.py` writes `deck/index-modern.html`. The deck swaps to `deck/clips-modern/`, recordings made in the Modern look (`SKIN=modern node scripts/record_clips.js`).
+
 ## 9. Repo layout
 
 ```
@@ -177,7 +185,7 @@ scripts/gen_tickets.py       generates the demo Jira export (REST v3 shape) and 
 integrations/boards.py       Jira + Kanban CSV adapters, mapping, analyses, issue payloads, JiraClient
 data/config/ticket_titles.json  ticket title library per skill (fixtures and the advisor's Jira export)
 scripts/build_viz.py         assembles viz/src/* + data -> viz/maieutica-explorer.html (fails on JS syntax errors)
-viz/src/                     style.css, body.html, js/00-core ... 99-main (one module per view)
+viz/src/                     style.css (both looks), body.html, js/00-core ... 99-main (one module per view)
 scripts/cdp.js               dependency-free Chrome driver used for tests and recording
 scripts/record_clips.js      records the demo clips for the deck (real interactions, MP4 + poster)
 deck/index.html              the pitch deck (16:9, keyboard nav, speaker notes on N, click a clip to enlarge)

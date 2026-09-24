@@ -1,8 +1,9 @@
 <title>Maieutica Pitch Deck</title>
+<script>(function () { var s = /*DEFAULT_SKIN*/"studio", q = new URLSearchParams(location.search).get("skin"), st = null; try { st = localStorage.getItem("maieutica-deck-skin"); } catch (e) {} if (q === "studio" || q === "modern") s = q; else if (st === "studio" || st === "modern") s = st; document.documentElement.dataset.skin = s; })();</script>
 <link rel="icon" type="image/png" href="assets/logo-64.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@600;700;800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
   :root {
     --bg: #0A1118; --panel: #111B25; --panel2: #172431; --ink: #EAF0F6; --ink2: #A9B7C6; --ink3: #7C8DA0; --line: #243444;
@@ -10,11 +11,13 @@
     --font-display: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
     --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --page: #0A1118; --win-bg: #ECEFF3; --win-bar: #1A2733; --win-dot: #34475A; --win-border: #2B3B4C; --win-shadow: 0 28px 70px -24px rgba(0,0,0,.75);
+    --nav-bg: rgba(23, 36, 49, .9); --notes-bg: rgba(9, 15, 21, .96);
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); overflow: hidden; }
+  body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--font-body); overflow: hidden; }
   button { font: inherit; color: inherit; }
   :focus-visible { outline: 2px solid var(--proj); outline-offset: 3px; }
   h1, h2, h3, p, ul, figure { margin: 0; }
@@ -50,12 +53,12 @@
   .hero-mark { position: absolute; left: 72px; top: 52px; width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06); }
 
   /* ---- window frame for clips ---- */
-  .win { position: relative; background: #ECEFF3; border-radius: 10px; overflow: hidden; border: 1px solid #2B3B4C; box-shadow: 0 28px 70px -24px rgba(0,0,0,.75); cursor: zoom-in; }
-  .win .top { height: 28px; background: #1A2733; display: flex; align-items: center; gap: 6px; padding-inline: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--ink3); letter-spacing: .04em; }
-  .win .top i { width: 9px; height: 9px; border-radius: 50%; background: #34475A; display: inline-block; }
+  .win { position: relative; background: var(--win-bg); border-radius: 10px; overflow: hidden; border: 1px solid var(--win-border); box-shadow: var(--win-shadow); cursor: zoom-in; }
+  .win .top { height: 28px; background: var(--win-bar); display: flex; align-items: center; gap: 6px; padding-inline: 12px; font-family: var(--font-mono); font-size: 11px; color: var(--ink3); letter-spacing: .04em; }
+  .win .top i { width: 9px; height: 9px; border-radius: 50%; background: var(--win-dot); display: inline-block; }
   .win .top span { margin-left: 8px; }
   .win .top em { margin-left: auto; font-style: normal; color: var(--ink3); }
-  .win video { display: block; width: 100%; aspect-ratio: 16 / 10; background: #ECEFF3; object-fit: cover; }
+  .win video { display: block; width: 100%; aspect-ratio: 16 / 10; background: var(--win-bg); object-fit: cover; }
   .zoomed { position: absolute; inset: 0; z-index: 30; background: rgba(4, 8, 12, .94); display: grid; place-items: center; padding: 14px; }
   .zoomed .win { width: auto; height: 100%; aspect-ratio: 16 / 10.4; max-width: 100%; display: flex; flex-direction: column; cursor: zoom-out; }
   .zoomed .win video { height: 100%; width: auto; max-width: 100%; flex: 1; min-height: 0; object-fit: contain; }
@@ -93,7 +96,7 @@
   .pipe { position: absolute; left: 72px; right: 72px; top: 214px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 34px; }
   .pipe .st { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 20px 20px 22px; min-height: 306px; }
   .pipe .st:not(:last-child)::after { content: ""; position: absolute; right: -27px; top: 50%; width: 20px; height: 20px; border-top: 2px solid var(--ink3); border-right: 2px solid var(--ink3); transform: translateY(-50%) rotate(45deg) scale(.7); }
-  .pipe .st.key { border-color: var(--pers); background: linear-gradient(180deg, rgba(76,194,160,.10), var(--panel) 60%); }
+  .pipe .st.key { border-color: var(--pers); background: linear-gradient(180deg, color-mix(in srgb, var(--pers) 11%, var(--panel)), var(--panel) 60%); }
   .pipe .k { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
   .pipe h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; margin: 8px 0 12px; letter-spacing: -0.01em; }
   .pipe li { font-size: 14.5px; line-height: 1.4; color: var(--ink2); padding: 5px 0; border-top: 1px solid var(--line); }
@@ -157,13 +160,37 @@
   /* ---- chrome ---- */
   .nav { position: fixed; z-index: 50; bottom: 10px; right: 12px; display: flex; gap: 6px; align-items: center; opacity: .0; transition: opacity .2s; }
   body:hover .nav, .nav:focus-within { opacity: 1; }
-  .nav button { background: rgba(23, 36, 49, .9); border: 1px solid var(--line); border-radius: 6px; width: 34px; height: 30px; cursor: pointer; color: var(--ink2); }
+  .nav button { background: var(--nav-bg); border: 1px solid var(--line); border-radius: 6px; width: 34px; height: 30px; cursor: pointer; color: var(--ink2); }
   .nav button:hover { color: var(--ink); border-color: var(--ink3); }
   .nav .ct { font-family: var(--font-mono); font-size: 12px; color: var(--ink3); padding: 0 8px; }
   .progress { position: fixed; z-index: 50; left: 0; top: 0; height: 3px; background: var(--pers); transition: width .3s ease; }
-  .notespanel { position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; background: rgba(9, 15, 21, .96); border-top: 1px solid var(--line); padding: 14px 24px 18px; font-size: 16px; line-height: 1.5; color: var(--ink); max-height: 32vh; overflow: auto; }
+  .notespanel { position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; background: var(--notes-bg); border-top: 1px solid var(--line); padding: 14px 24px 18px; font-size: 16px; line-height: 1.5; color: var(--ink); max-height: 32vh; overflow: auto; }
   .notespanel small { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
   [hidden] { display: none !important; }
+
+  /* ================= MODERN look: light slides, navy bookends, Manrope + Geist ================= */
+  :root[data-skin="modern"] {
+    --bg: #FFFFFF; --page: #D9E0EB; --panel: #F3F6FA; --panel2: #EAEFF6; --ink: #0F1B3D; --ink2: #46526D; --ink3: #6A7590; --line: #DDE3EC;
+    --goal: #7C3AED; --proj: #2563EB; --pers: #059669; --skill: #DB2777; --warn: #B45309; --bad: #DC2626;
+    --font-display: "Manrope", "Geist", system-ui, sans-serif; --font-body: "Geist", "IBM Plex Sans", system-ui, sans-serif; --font-mono: "Geist Mono", "IBM Plex Mono", ui-monospace, monospace;
+    --win-bg: #FFFFFF; --win-bar: #EEF2F8; --win-dot: #C7D0E0; --win-border: #D5DCE8; --win-shadow: 0 30px 70px -30px rgba(15, 27, 61, .38), 0 2px 6px rgba(15, 27, 61, .06);
+    --nav-bg: rgba(255, 255, 255, .92); --notes-bg: rgba(255, 255, 255, .97);
+    color-scheme: light;
+  }
+  :root[data-skin="modern"] .cover, :root[data-skin="modern"] .close {
+    --bg: #0F1B3D; --panel: #16244A; --ink: #F2F5FB; --ink2: #B7C2DA; --ink3: #8C9AB8; --line: #2A3A63;
+    --goal: #A78BFA; --proj: #7DB2FF; --pers: #34D399; --skill: #F472B6; --warn: #FBBF24;
+    --win-border: #2A3A63; --win-bar: #1A2A55; --win-dot: #3B4E80; --win-shadow: 0 30px 70px -24px rgba(0, 0, 0, .6);
+    background: var(--bg); color: var(--ink);
+  }
+  :root[data-skin="modern"] h2, :root[data-skin="modern"] .cover h1, :root[data-skin="modern"] .stat .n, :root[data-skin="modern"] .pipe h3, :root[data-skin="modern"] .case .q,
+  :root[data-skin="modern"] .tile h3, :root[data-skin="modern"] .ph h3, :root[data-skin="modern"] .close .row b, :root[data-skin="modern"] .prob h3, :root[data-skin="modern"] .lay h3, :root[data-skin="modern"] .side h3 { font-weight: 800; }
+  :root[data-skin="modern"] .cover .tag { font-weight: 600; }
+  :root[data-skin="modern"] .split h2 { font-size: 39px; line-height: 1.08; }
+  :root[data-skin="modern"] .win { border-radius: 12px; }
+  :root[data-skin="modern"] .pipe .st, :root[data-skin="modern"] .case, :root[data-skin="modern"] .tile, :root[data-skin="modern"] .ph, :root[data-skin="modern"] .lay { border-radius: 12px; box-shadow: 0 1px 2px rgba(15, 27, 61, .05), 0 8px 22px -16px rgba(15, 27, 61, .25); }
+  :root[data-skin="modern"] .slide.on { }
+  :root[data-skin="modern"] .cover .etym b { color: var(--ink); }
 </style>
 
 <div class="viewport" id="viewport"><div class="stage" id="stage">
@@ -459,7 +486,7 @@
 </div></div>
 
 <div class="progress" id="progress"></div>
-<nav class="nav" aria-label="Slide controls"><button id="prev" aria-label="Previous slide">‹</button><span class="ct" id="ct"></span><button id="next" aria-label="Next slide">›</button><button id="nbtn" aria-label="Toggle speaker notes" title="Speaker notes (N)">N</button></nav>
+<nav class="nav" aria-label="Slide controls"><button id="prev" aria-label="Previous slide">‹</button><span class="ct" id="ct"></span><button id="next" aria-label="Next slide">›</button><button id="skinbtn" aria-label="Switch look" title="Switch look (T)">T</button><button id="nbtn" aria-label="Toggle speaker notes" title="Speaker notes (N)">N</button></nav>
 <div class="notespanel" id="notespanel" hidden><small>Speaker notes</small><div id="notestext"></div></div>
 
 <script>
@@ -469,8 +496,22 @@
   const N = slides.length;
   let i = 0, zoomEl = null;
 
+  /* look: Studio (dark) or Modern (light). Each has its own recordings of the product. */
+  function setSkin(skin, save) {
+    document.documentElement.dataset.skin = skin;
+    const pre = skin === 'modern' ? 'clips-modern/' : 'clips/', swap = u => u.replace(/clips(-modern)?\//, pre);
+    stage.querySelectorAll('video').forEach(v => {
+      const src = swap(v.getAttribute('src')), poster = swap(v.getAttribute('poster'));
+      if (v.getAttribute('src') !== src) { v.setAttribute('src', src); v.setAttribute('poster', poster); v.load(); }
+    });
+    if (save) { try { localStorage.setItem('maieutica-deck-skin', skin); } catch (e) { /* storage blocked */ } }
+    if (typeof playVideos === 'function' && slides.length) playVideos();
+  }
+  const toggleSkin = () => setSkin(document.documentElement.dataset.skin === 'modern' ? 'studio' : 'modern', true);
+
   const fit = () => stage.style.setProperty('--s', Math.min(innerWidth / 1280, innerHeight / 720));
   addEventListener('resize', fit); fit();
+  document.getElementById('skinbtn').addEventListener('click', toggleSkin);
   slides.forEach((s, k) => { const n = s.querySelector('.sfoot .n'); if (n) n.textContent = `${String(k + 1).padStart(2, '0')} / ${N}  ·  ${s.dataset.title}`; });
 
   function playVideos() {
@@ -518,6 +559,7 @@
     else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(k)) { e.preventDefault(); go(i - 1); }
     else if (k === 'Home') go(0); else if (k === 'End') go(N - 1);
     else if (k === 'n' || k === 'N') toggleNotes();
+    else if (k === 't' || k === 'T') toggleSkin();
     else if (k === 'Escape') { if (zoomEl) closeZoom(); else notes.hidden = true; }
     else if (k === 'z' || k === 'Z') { const w = slides[i].querySelector('.win'); if (w) (zoomEl ? closeZoom() : openZoom(w)); }
     else if (k === 'f' || k === 'F') { try { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); } catch (err) { /* not allowed here */ } }
@@ -568,5 +610,6 @@
   const fromHash = () => { const h = parseInt((location.hash || '').slice(1), 10); return Number.isFinite(h) ? h - 1 : 0; };
   addEventListener('hashchange', () => go(fromHash(), true));
   go(fromHash(), true);
+  setSkin(document.documentElement.dataset.skin || 'studio', false);
 })();
 </script>

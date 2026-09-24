@@ -6,9 +6,9 @@
 
 Maieutica maps a company as one graph of **goals, projects, people and skills**, then answers the questions leaders actually ask: who can do this, what breaks if someone leaves, where are we fragile, and which projects cost more than they return. All data in this repo is a **synthetic demo company** ("Aldermoor Systems").
 
-- **Explorer**: `viz/maieutica-explorer.html` (open in a browser). Eight views: four-layer graph, three networks with betweenness and structural holes, gaps and alignment, portfolio economics, succession, an onboarding chat, a use-case advisor and a Jira / Kanban board with skill signals.
+- **Explorer**: `viz/maieutica-explorer.html` (open in a browser; `maieutica-explorer-modern.html` opens in the sidebar **Modern** look, and either look can be switched in the header). Eight views: four-layer graph, three networks with betweenness and structural holes, gaps and alignment, portfolio economics, succession, an onboarding chat, a use-case advisor and a Jira / Kanban board with skill signals.
 - **Jira / Kanban integration**: `integrations/boards.py` reads Jira (REST v3) or Kanban CSV exports into the graph and turns a use-case proposal into a Jira epic with stories. Tested offline against a Jira-shaped fixture; not yet run against a live Jira site (see `docs/DESIGN.md` section 9).
-- **Deck**: `deck/index.html` (17 slides, real clips of the product; press `N` for speaker notes).
+- **Deck**: `deck/index.html` and `deck/index-modern.html` (17 slides, dark **Studio** or light **Modern**, `T` switches; real clips of the product; press `N` for speaker notes).
 - **Design notes**: `docs/DESIGN.md` (data model, metric definitions, risks, roadmap).
 
 ## Build and test
@@ -16,10 +16,11 @@ Maieutica maps a company as one graph of **goals, projects, people and skills**,
 ```
 python3 scripts/generate_sample.py          # synthetic data -> data/sample/*.json
 python3 -m unittest discover -s tests       # schema + derived SQL views
-python3 scripts/build_viz.py                # viz/src/* + data -> viz/maieutica-explorer.html
+python3 scripts/build_viz.py                # viz/src/* + data -> viz/maieutica-explorer{,-modern}.html
+python3 scripts/build_deck.py               # deck/index.html -> deck/index-modern.html
 python3 integrations/boards.py map data/sample/jira_issues.json   # what a Jira sync derives
 node tests/check_explorer.js                # end-to-end test in headless Chrome
-node scripts/record_clips.js                # optional: re-record the deck clips
+node scripts/record_clips.js                # optional: re-record the deck clips (SKIN=modern for the Modern look)
 ```
 
 Needs Python 3, Node 22+, Google Chrome and ffmpeg (the last two only for the end-to-end test and clip recording).

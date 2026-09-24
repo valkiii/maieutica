@@ -17,11 +17,16 @@ def data_uri(path):
     return "data:image/png;base64," + base64.b64encode((ROOT / "assets" / path).read_bytes()).decode()
 js = "\n".join(p.read_text(encoding="utf-8") for p in sorted((SRC / "js").glob("*.js")))
 
-html = f"""<title>Maieutica Explorer</title>
-<link rel="icon" type="image/png" href="{data_uri("logo-64.png")}">
+EARLY_SKIN = """<script>(function () {{ var s = "{default}", q = new URLSearchParams(location.search).get("skin"), st = null; try {{ st = localStorage.getItem("maieutica-skin"); }} catch (e) {{}} if (q === "studio" || q === "modern") s = q; else if (st === "studio" || st === "modern") s = st; document.documentElement.dataset.skin = s; }})();</script>
+"""
+
+
+def page(default_skin):
+    return f"""<title>Maieutica Explorer</title>
+{EARLY_SKIN.format(default=default_skin)}<link rel="icon" type="image/png" href="{data_uri("logo-64.png")}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@600;700;800&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
 {(SRC / "style.css").read_text(encoding="utf-8")}
 </style>
@@ -32,6 +37,8 @@ const RAW0 = {blob};   // one array per schema table
 {js}
 </script>
 """
+
+
 # fail the build on a JS syntax error rather than shipping a blank page
 import shutil, subprocess, tempfile
 if shutil.which("node"):
@@ -41,6 +48,8 @@ if shutil.which("node"):
     if r.returncode:
         raise SystemExit("JS syntax error:\n" + r.stderr)
 
-out = ROOT / "viz" / "maieutica-explorer.html"
-out.write_text(html, encoding="utf-8")
-print(f"wrote {out} ({out.stat().st_size // 1024} KB)")
+# one code base, two looks: the default look differs, and either can be switched in the page
+for name, skin in (("maieutica-explorer.html", "studio"), ("maieutica-explorer-modern.html", "modern")):
+    out = ROOT / "viz" / name
+    out.write_text(page(skin), encoding="utf-8")
+    print(f"wrote {out} ({out.stat().st_size // 1024} KB, default look: {skin})")
