@@ -1,0 +1,38 @@
+[
+ {
+  "id": "org_engineering",
+  "tenant_id": "t_demo",
+  "name": "Engineering",
+  "parent_id": null
+ },
+ {
+  "id": "org_data_ai",
+  "tenant_id": "t_demo",
+  "name": "Data & AI",
+  "parent_id": null
+ },
+ {
+  "id": "org_product_design",
+  "tenant_id": "t_demo",
+  "name": "Product & Design",
+  "parent_id": null
+ },
+ {
+  "id": "org_operations",
+  "tenant_id": "t_demo",
+  "name": "Operations",
+  "parent_id": null
+ },
+ {
+  "id": "org_commercial",
+  "tenant_id": "t_demo",
+  "name": "Commercial",
+  "parent_id": null
+ },
+ {
+  "id": "org_people_finance",
+  "tenant_id": "t_demo",
+  "name": "People & Finance",
+  "parent_id": null
+ }
+]

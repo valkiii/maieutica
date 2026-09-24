@@ -1,0 +1,98 @@
+[
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_customer_portal_2_0",
+  "goal_id": "gol_growth",
+  "contribution": 0.9
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_predictive_eta_engine",
+  "goal_id": "gol_growth",
+  "contribution": 0.6
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_predictive_eta_engine",
+  "goal_id": "gol_ops",
+  "contribution": 0.5
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_cloud_migration",
+  "goal_id": "gol_platform",
+  "contribution": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_cloud_migration",
+  "goal_id": "gol_trust",
+  "contribution": 0.3
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_data_platform_consolidation",
+  "goal_id": "gol_platform",
+  "contribution": 0.7
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_data_platform_consolidation",
+  "goal_id": "gol_ops",
+  "contribution": 0.4
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_warehouse_automation_pilot",
+  "goal_id": "gol_ops",
+  "contribution": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_iso_27001_certification",
+  "goal_id": "gol_trust",
+  "contribution": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_eu_expansion_playbook",
+  "goal_id": "gol_growth",
+  "contribution": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_pricing_revamp",
+  "goal_id": "gol_growth",
+  "contribution": 0.8
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_api_platform",
+  "goal_id": "gol_platform",
+  "contribution": 0.6
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_api_platform",
+  "goal_id": "gol_growth",
+  "contribution": 0.5
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_finance_close_automation",
+  "goal_id": "gol_ops",
+  "contribution": 0.8
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_mobile_driver_app",
+  "goal_id": "gol_growth",
+  "contribution": 0.7
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_mobile_driver_app",
+  "goal_id": "gol_ops",
+  "contribution": 0.4
+ }
+]

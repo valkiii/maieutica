@@ -1,0 +1,26 @@
+[
+ {
+  "id": "cb_junior",
+  "tenant_id": "t_demo",
+  "name": "Junior",
+  "eur_per_fte_month": 5500
+ },
+ {
+  "id": "cb_mid",
+  "tenant_id": "t_demo",
+  "name": "Mid",
+  "eur_per_fte_month": 7500
+ },
+ {
+  "id": "cb_senior",
+  "tenant_id": "t_demo",
+  "name": "Senior",
+  "eur_per_fte_month": 9500
+ },
+ {
+  "id": "cb_lead",
+  "tenant_id": "t_demo",
+  "name": "Lead / Head",
+  "eur_per_fte_month": 12000
+ }
+]

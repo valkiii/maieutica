@@ -1,0 +1,128 @@
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Maieutica</h1>
+      <p class="tag">Draw out what your organisation already knows.</p>
+    </div>
+    <p class="demo" id="demo-note"></p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button class="tab" role="tab" id="t-layers" aria-controls="v-layers" aria-selected="true">The four layers</button>
+    <button class="tab" role="tab" id="t-net" aria-controls="v-net" aria-selected="false">Networks<small>3 graphs</small></button>
+    <button class="tab" role="tab" id="t-gaps" aria-controls="v-gaps" aria-selected="false">Gaps &amp; alignment</button>
+    <button class="tab" role="tab" id="t-econ" aria-controls="v-econ" aria-selected="false">Portfolio economics</button>
+    <button class="tab" role="tab" id="t-leaver" aria-controls="v-leaver" aria-selected="false">If someone leaves</button>
+    <button class="tab" role="tab" id="t-onboard" aria-controls="v-onboard" aria-selected="false">Onboarding chat</button>
+    <button class="tab" role="tab" id="t-usecase" aria-controls="v-usecase" aria-selected="false">Use-case advisor</button>
+  </nav>
+
+  <!-- 1. LAYERS -->
+  <section class="view" id="v-layers" role="tabpanel" aria-labelledby="t-layers">
+    <p class="lede">Strategy sits on top, skills at the bottom, and <b>projects and people are the two-way bridge</b> between them. Everything on this page is stored as four simple link tables (goal–project, project–person, person–skill, project–skill). Hover any node to light up its neighbourhood; click to pin it and read the details.</p>
+    <div class="split">
+      <div class="panel scroll"><svg id="svg-layers" role="img" aria-label="Four-layer graph of goals, projects, people and skills"></svg></div>
+      <aside class="panel insp" id="insp-layers" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <!-- 2. NETWORKS -->
+  <section class="view" id="v-net" role="tabpanel" aria-labelledby="t-net" hidden>
+    <p class="lede">Three networks, all <b>computed</b> from the stored links: <b>who works with whom</b>, <b>which use cases are entangled</b> (shared people and skills), and <b>which skills live in the same heads</b>. Switch layers on and off, view them <b>separately or overlapped</b>, and read every node's <b>betweenness</b> (who sits on the paths between others) and <b>structural holes</b> (gaps only this node bridges).</p>
+    <div class="net-bar">
+      <div><span class="lbl">Layers</span>
+        <button class="lay-toggle" id="nl-p" data-l="p" aria-pressed="true" style="--c: var(--pers)"><i></i>People <small id="nc-p"></small></button>
+        <button class="lay-toggle" id="nl-j" data-l="j" aria-pressed="true" style="--c: var(--proj)"><i></i>Use cases <small id="nc-j"></small></button>
+        <button class="lay-toggle" id="nl-s" data-l="s" aria-pressed="true" style="--c: var(--skill)"><i></i>Skills <small id="nc-s"></small></button>
+      </div>
+      <div><span class="lbl">View</span>
+        <div class="seg" role="group" aria-label="Separate or overlap layers">
+          <button id="nm-sep" aria-pressed="true">Separate</button>
+          <button id="nm-ovl" aria-pressed="false">Overlap</button>
+        </div>
+      </div>
+      <div><span class="lbl">Size nodes by</span>
+        <div class="seg" role="group" aria-label="Node size measure">
+          <button id="sz-bet" aria-pressed="true">Betweenness</button>
+          <button id="sz-sh" aria-pressed="false">Structural holes</button>
+          <button id="sz-deg" aria-pressed="false">Connections</button>
+        </div>
+      </div>
+    </div>
+    <div class="split">
+      <div id="net-panels" class="net-panels n3"></div>
+      <aside class="panel insp" id="insp-net" aria-live="polite"></aside>
+    </div>
+    <div class="cards" id="net-cards"></div>
+    <details class="more" id="net-more"><summary>Every node, ranked (click a column to sort)</summary><div class="mtable-wrap" id="net-table"></div></details>
+  </section>
+
+  <!-- 3. GAPS -->
+  <section class="view" id="v-gaps" role="tabpanel" aria-labelledby="t-gaps" hidden>
+    <p class="lede">Compare <b>what live projects demand</b> with <b>who actually holds each skill</b>, then trace the risk up to company goals. A skill is a <b>single point of failure</b> when two or more live projects need it, at most one person is an expert (level 4+) and only one or two people can do it at working level.</p>
+    <div class="cards" id="findings" style="margin-top:0;margin-bottom:16px"></div>
+    <div class="panel">
+      <div class="tablehead"><span>Skill</span><span>Who holds it (level 3+)</span><span>Needed by</span><span>Status</span></div>
+      <div id="skillrows"></div>
+    </div>
+    <p class="note" style="margin-top:10px">Each square is one person; the darker the square, the higher their level (3 working · 4 advanced · 5 expert). Hover a square for the name.</p>
+  </section>
+
+  <!-- 4. ECONOMICS -->
+  <section class="view" id="v-econ" role="tabpanel" aria-labelledby="t-econ" hidden>
+    <p class="lede">What does each use case <b>cost</b> (people, time), how <b>complex</b> is it (duration, number of skill sets, depth), and what is it <b>worth</b>? Value is <b>risk-adjusted</b> (expected value × confidence). Bubbles below the red line return less than 1.25× their cost in a year: <b>under-optimised</b>.</p>
+    <div class="kpis" id="econ-kpis"></div>
+    <div class="econ-grid">
+      <div class="panel">
+        <div class="net-controls">
+          <div class="seg" role="group" aria-label="X axis">
+            <button id="ax-eur" aria-pressed="true">Cost in €</button>
+            <button id="ax-fte" aria-pressed="false">Effort in FTE-months</button>
+          </div>
+          <div class="legend" id="econ-legend"></div>
+        </div>
+        <div class="scroll"><svg id="svg-econ" viewBox="0 0 640 470" role="img" aria-label="Risk-adjusted value against cost for every project"></svg></div>
+      </div>
+      <div class="stack" id="econ-side"></div>
+    </div>
+    <div class="panel" style="margin-top:16px"><div class="mtable-wrap" id="econ-table" style="padding:6px 16px 10px"></div></div>
+    <p class="note" style="margin-top:10px" id="econ-note"></p>
+  </section>
+
+  <!-- 5. LEAVER -->
+  <section class="view" id="v-leaver" role="tabpanel" aria-labelledby="t-leaver" hidden>
+    <p class="lede">Pick someone who is leaving. Maieutica reads what they <b>actually did</b> (skills in use, projects, collaborators), shows what breaks, ranks internal successors, and drafts a job description from real work, not from a stale one.</p>
+    <div class="picker">
+      <label for="leaver-pick"><b>Who is leaving?</b></label>
+      <select id="leaver-pick"></select>
+    </div>
+    <div class="leaver-grid" id="leaver-out"></div>
+  </section>
+
+  <!-- 6. ONBOARDING -->
+  <section class="view" id="v-onboard" role="tabpanel" aria-labelledby="t-onboard" hidden>
+    <p class="lede">A new colleague joins. Instead of a form, Maieutica chats: it reads their <b>CV</b> or asks a few <b>targeted questions</b>, proposes skills with evidence, and <b>nothing enters the graph until the person confirms it</b>. It then asks only what the organisation is actually missing. Try it: the sample CV is editable.</p>
+    <div class="chat-layout">
+      <div class="panel chat" aria-label="Onboarding conversation">
+        <div class="chat-head"><span class="av">M</span><div><b>Maieutica</b><small>Onboarding assistant · about 3 minutes</small></div></div>
+        <div class="chat-log" id="ob-log" aria-live="polite"></div>
+        <div class="quick" id="ob-quick"></div>
+      </div>
+      <div class="panel side" id="ob-side"></div>
+    </div>
+  </section>
+
+  <!-- 7. USE-CASE ADVISOR -->
+  <section class="view" id="v-usecase" role="tabpanel" aria-labelledby="t-usecase" hidden>
+    <p class="lede">Describe an idea in plain words. Maieutica maps it to skills, estimates <b>complexity, effort and value</b>, proposes the <b>right team</b> from people who have both the skills and the time (even freeing them from under-optimised work), and <b>recommends a hire</b> only where nobody can cover a skill.</p>
+    <div class="chat-layout">
+      <div class="panel chat" aria-label="Use-case advisor conversation">
+        <div class="chat-head"><span class="av">M</span><div><b>Use-case advisor</b><small>Impact, team and hiring in one conversation</small></div></div>
+        <div class="chat-log" id="uc-log" aria-live="polite"></div>
+        <div class="quick" id="uc-quick"></div>
+        <form class="chat-input" id="uc-form"><input type="text" id="uc-text" placeholder="Describe a use case, e.g. predict churn for our top accounts" autocomplete="off" aria-label="Describe a use case"><button class="btn" id="uc-send" type="submit">Send</button></form>
+      </div>
+      <div class="panel side" id="uc-side"></div>
+    </div>
+  </section>
+</div>

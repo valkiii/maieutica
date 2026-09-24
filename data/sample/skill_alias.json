@@ -1,0 +1,626 @@
+[
+ {
+  "skill_id": "skl_python",
+  "alias": "python3"
+ },
+ {
+  "skill_id": "skl_python",
+  "alias": "pandas"
+ },
+ {
+  "skill_id": "skl_python",
+  "alias": "numpy"
+ },
+ {
+  "skill_id": "skl_python",
+  "alias": "fastapi"
+ },
+ {
+  "skill_id": "skl_python",
+  "alias": "django"
+ },
+ {
+  "skill_id": "skl_typescript",
+  "alias": "typescript"
+ },
+ {
+  "skill_id": "skl_typescript",
+  "alias": "javascript"
+ },
+ {
+  "skill_id": "skl_typescript",
+  "alias": "react"
+ },
+ {
+  "skill_id": "skl_typescript",
+  "alias": "node.js"
+ },
+ {
+  "skill_id": "skl_typescript",
+  "alias": "nodejs"
+ },
+ {
+  "skill_id": "skl_typescript",
+  "alias": "react native"
+ },
+ {
+  "skill_id": "skl_typescript",
+  "alias": "vue"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "amazon web services"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "ec2"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "s3"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "lambda"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "cloudformation"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "terraform"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "gcp"
+ },
+ {
+  "skill_id": "skl_aws",
+  "alias": "azure"
+ },
+ {
+  "skill_id": "skl_kubernetes",
+  "alias": "k8s"
+ },
+ {
+  "skill_id": "skl_kubernetes",
+  "alias": "helm"
+ },
+ {
+  "skill_id": "skl_kubernetes",
+  "alias": "docker"
+ },
+ {
+  "skill_id": "skl_kubernetes",
+  "alias": "containers"
+ },
+ {
+  "skill_id": "skl_kubernetes",
+  "alias": "eks"
+ },
+ {
+  "skill_id": "skl_kubernetes",
+  "alias": "openshift"
+ },
+ {
+  "skill_id": "skl_api_design",
+  "alias": "rest api"
+ },
+ {
+  "skill_id": "skl_api_design",
+  "alias": "rest apis"
+ },
+ {
+  "skill_id": "skl_api_design",
+  "alias": "openapi"
+ },
+ {
+  "skill_id": "skl_api_design",
+  "alias": "graphql"
+ },
+ {
+  "skill_id": "skl_api_design",
+  "alias": "microservices"
+ },
+ {
+  "skill_id": "skl_api_design",
+  "alias": "api gateway"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "infosec"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "security audit"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "penetration testing"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "pentest"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "iso 27001"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "soc 2"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "soc2"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "siem"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "incident response"
+ },
+ {
+  "skill_id": "skl_cybersecurity",
+  "alias": "information security"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "postgresql"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "postgres"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "mysql"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "bigquery"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "snowflake"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "data modelling"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "data modeling"
+ },
+ {
+  "skill_id": "skl_sql",
+  "alias": "dbt"
+ },
+ {
+  "skill_id": "skl_data_engineering",
+  "alias": "etl"
+ },
+ {
+  "skill_id": "skl_data_engineering",
+  "alias": "airflow"
+ },
+ {
+  "skill_id": "skl_data_engineering",
+  "alias": "spark"
+ },
+ {
+  "skill_id": "skl_data_engineering",
+  "alias": "data pipelines"
+ },
+ {
+  "skill_id": "skl_data_engineering",
+  "alias": "data pipeline"
+ },
+ {
+  "skill_id": "skl_data_engineering",
+  "alias": "data warehouse"
+ },
+ {
+  "skill_id": "skl_data_engineering",
+  "alias": "kafka"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "ml"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "llm"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "llms"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "deep learning"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "scikit-learn"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "pytorch"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "tensorflow"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "nlp"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "forecasting"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "predictive model"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "predictive models"
+ },
+ {
+  "skill_id": "skl_machine_learning",
+  "alias": "generative ai"
+ },
+ {
+  "skill_id": "skl_ux_research",
+  "alias": "user research"
+ },
+ {
+  "skill_id": "skl_ux_research",
+  "alias": "usability testing"
+ },
+ {
+  "skill_id": "skl_ux_research",
+  "alias": "user interviews"
+ },
+ {
+  "skill_id": "skl_ux_research",
+  "alias": "ux"
+ },
+ {
+  "skill_id": "skl_ui_design",
+  "alias": "figma"
+ },
+ {
+  "skill_id": "skl_ui_design",
+  "alias": "design system"
+ },
+ {
+  "skill_id": "skl_ui_design",
+  "alias": "interface design"
+ },
+ {
+  "skill_id": "skl_ui_design",
+  "alias": "ui"
+ },
+ {
+  "skill_id": "skl_product_discovery",
+  "alias": "product discovery"
+ },
+ {
+  "skill_id": "skl_product_discovery",
+  "alias": "customer discovery"
+ },
+ {
+  "skill_id": "skl_product_discovery",
+  "alias": "product management"
+ },
+ {
+  "skill_id": "skl_product_discovery",
+  "alias": "jobs to be done"
+ },
+ {
+  "skill_id": "skl_roadmapping",
+  "alias": "roadmap"
+ },
+ {
+  "skill_id": "skl_roadmapping",
+  "alias": "product strategy"
+ },
+ {
+  "skill_id": "skl_roadmapping",
+  "alias": "okrs"
+ },
+ {
+  "skill_id": "skl_agile_delivery",
+  "alias": "scrum"
+ },
+ {
+  "skill_id": "skl_agile_delivery",
+  "alias": "kanban"
+ },
+ {
+  "skill_id": "skl_agile_delivery",
+  "alias": "agile"
+ },
+ {
+  "skill_id": "skl_agile_delivery",
+  "alias": "sprint planning"
+ },
+ {
+  "skill_id": "skl_program_management",
+  "alias": "programme management"
+ },
+ {
+  "skill_id": "skl_program_management",
+  "alias": "program manager"
+ },
+ {
+  "skill_id": "skl_program_management",
+  "alias": "pmo"
+ },
+ {
+  "skill_id": "skl_program_management",
+  "alias": "portfolio management"
+ },
+ {
+  "skill_id": "skl_program_management",
+  "alias": "pmp"
+ },
+ {
+  "skill_id": "skl_program_management",
+  "alias": "prince2"
+ },
+ {
+  "skill_id": "skl_risk_management",
+  "alias": "risk assessment"
+ },
+ {
+  "skill_id": "skl_risk_management",
+  "alias": "risk register"
+ },
+ {
+  "skill_id": "skl_risk_management",
+  "alias": "enterprise risk"
+ },
+ {
+  "skill_id": "skl_risk_management",
+  "alias": "iso 31000"
+ },
+ {
+  "skill_id": "skl_risk_management",
+  "alias": "grc"
+ },
+ {
+  "skill_id": "skl_change_management",
+  "alias": "change management"
+ },
+ {
+  "skill_id": "skl_change_management",
+  "alias": "adkar"
+ },
+ {
+  "skill_id": "skl_change_management",
+  "alias": "organisational change"
+ },
+ {
+  "skill_id": "skl_change_management",
+  "alias": "organizational change"
+ },
+ {
+  "skill_id": "skl_change_management",
+  "alias": "transformation"
+ },
+ {
+  "skill_id": "skl_vendor_management",
+  "alias": "procurement"
+ },
+ {
+  "skill_id": "skl_vendor_management",
+  "alias": "supplier management"
+ },
+ {
+  "skill_id": "skl_vendor_management",
+  "alias": "vendor selection"
+ },
+ {
+  "skill_id": "skl_vendor_management",
+  "alias": "sourcing"
+ },
+ {
+  "skill_id": "skl_stakeholder_communication",
+  "alias": "stakeholder management"
+ },
+ {
+  "skill_id": "skl_stakeholder_communication",
+  "alias": "executive reporting"
+ },
+ {
+  "skill_id": "skl_stakeholder_communication",
+  "alias": "presentations"
+ },
+ {
+  "skill_id": "skl_stakeholder_communication",
+  "alias": "board reporting"
+ },
+ {
+  "skill_id": "skl_coaching",
+  "alias": "mentoring"
+ },
+ {
+  "skill_id": "skl_coaching",
+  "alias": "mentor"
+ },
+ {
+  "skill_id": "skl_coaching",
+  "alias": "coaching"
+ },
+ {
+  "skill_id": "skl_coaching",
+  "alias": "training delivery"
+ },
+ {
+  "skill_id": "skl_coaching",
+  "alias": "people development"
+ },
+ {
+  "skill_id": "skl_recruiting",
+  "alias": "talent acquisition"
+ },
+ {
+  "skill_id": "skl_recruiting",
+  "alias": "recruitment"
+ },
+ {
+  "skill_id": "skl_recruiting",
+  "alias": "hiring"
+ },
+ {
+  "skill_id": "skl_recruiting",
+  "alias": "sourcing candidates"
+ },
+ {
+  "skill_id": "skl_supply_chain",
+  "alias": "logistics"
+ },
+ {
+  "skill_id": "skl_supply_chain",
+  "alias": "warehouse"
+ },
+ {
+  "skill_id": "skl_supply_chain",
+  "alias": "inventory"
+ },
+ {
+  "skill_id": "skl_supply_chain",
+  "alias": "demand planning"
+ },
+ {
+  "skill_id": "skl_supply_chain",
+  "alias": "s&op"
+ },
+ {
+  "skill_id": "skl_supply_chain",
+  "alias": "freight"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "gdpr"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "data protection"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "dpo"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "privacy"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "dpia"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "compliance"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "regulatory"
+ },
+ {
+  "skill_id": "skl_gdpr_compliance",
+  "alias": "ai act"
+ },
+ {
+  "skill_id": "skl_financial_reporting",
+  "alias": "ifrs"
+ },
+ {
+  "skill_id": "skl_financial_reporting",
+  "alias": "gaap"
+ },
+ {
+  "skill_id": "skl_financial_reporting",
+  "alias": "month-end close"
+ },
+ {
+  "skill_id": "skl_financial_reporting",
+  "alias": "financial statements"
+ },
+ {
+  "skill_id": "skl_financial_reporting",
+  "alias": "controlling"
+ },
+ {
+  "skill_id": "skl_financial_reporting",
+  "alias": "budgeting"
+ },
+ {
+  "skill_id": "skl_financial_reporting",
+  "alias": "forecast accuracy"
+ },
+ {
+  "skill_id": "skl_enterprise_sales",
+  "alias": "b2b sales"
+ },
+ {
+  "skill_id": "skl_enterprise_sales",
+  "alias": "enterprise sales"
+ },
+ {
+  "skill_id": "skl_enterprise_sales",
+  "alias": "account executive"
+ },
+ {
+  "skill_id": "skl_enterprise_sales",
+  "alias": "pipeline management"
+ },
+ {
+  "skill_id": "skl_enterprise_sales",
+  "alias": "solution selling"
+ },
+ {
+  "skill_id": "skl_customer_success",
+  "alias": "customer success"
+ },
+ {
+  "skill_id": "skl_customer_success",
+  "alias": "account management"
+ },
+ {
+  "skill_id": "skl_customer_success",
+  "alias": "churn"
+ },
+ {
+  "skill_id": "skl_customer_success",
+  "alias": "onboarding customers"
+ },
+ {
+  "skill_id": "skl_customer_success",
+  "alias": "nps"
+ },
+ {
+  "skill_id": "skl_customer_success",
+  "alias": "retention"
+ },
+ {
+  "skill_id": "skl_negotiation",
+  "alias": "negotiation"
+ },
+ {
+  "skill_id": "skl_negotiation",
+  "alias": "contract negotiation"
+ },
+ {
+  "skill_id": "skl_negotiation",
+  "alias": "commercial terms"
+ }
+]

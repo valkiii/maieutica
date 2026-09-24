@@ -1,0 +1,331 @@
+[
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_customer_portal_2_0",
+  "skill_id": "skl_typescript",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_customer_portal_2_0",
+  "skill_id": "skl_ui_design",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_customer_portal_2_0",
+  "skill_id": "skl_api_design",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_customer_portal_2_0",
+  "skill_id": "skl_ux_research",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_customer_portal_2_0",
+  "skill_id": "skl_agile_delivery",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_predictive_eta_engine",
+  "skill_id": "skl_machine_learning",
+  "min_level": 5,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_predictive_eta_engine",
+  "skill_id": "skl_python",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_predictive_eta_engine",
+  "skill_id": "skl_data_engineering",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_predictive_eta_engine",
+  "skill_id": "skl_aws",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_cloud_migration",
+  "skill_id": "skl_aws",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_cloud_migration",
+  "skill_id": "skl_kubernetes",
+  "min_level": 5,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_cloud_migration",
+  "skill_id": "skl_cybersecurity",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_cloud_migration",
+  "skill_id": "skl_program_management",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_data_platform_consolidation",
+  "skill_id": "skl_data_engineering",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_data_platform_consolidation",
+  "skill_id": "skl_sql",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_data_platform_consolidation",
+  "skill_id": "skl_aws",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_data_platform_consolidation",
+  "skill_id": "skl_python",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_warehouse_automation_pilot",
+  "skill_id": "skl_supply_chain",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_warehouse_automation_pilot",
+  "skill_id": "skl_program_management",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_warehouse_automation_pilot",
+  "skill_id": "skl_vendor_management",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_warehouse_automation_pilot",
+  "skill_id": "skl_change_management",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_iso_27001_certification",
+  "skill_id": "skl_cybersecurity",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_iso_27001_certification",
+  "skill_id": "skl_gdpr_compliance",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_iso_27001_certification",
+  "skill_id": "skl_risk_management",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_iso_27001_certification",
+  "skill_id": "skl_change_management",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_eu_expansion_playbook",
+  "skill_id": "skl_enterprise_sales",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_eu_expansion_playbook",
+  "skill_id": "skl_negotiation",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_eu_expansion_playbook",
+  "skill_id": "skl_gdpr_compliance",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_eu_expansion_playbook",
+  "skill_id": "skl_customer_success",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_pricing_revamp",
+  "skill_id": "skl_product_discovery",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_pricing_revamp",
+  "skill_id": "skl_sql",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_pricing_revamp",
+  "skill_id": "skl_negotiation",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_pricing_revamp",
+  "skill_id": "skl_financial_reporting",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_api_platform",
+  "skill_id": "skl_api_design",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_api_platform",
+  "skill_id": "skl_typescript",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_api_platform",
+  "skill_id": "skl_kubernetes",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_api_platform",
+  "skill_id": "skl_python",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_finance_close_automation",
+  "skill_id": "skl_financial_reporting",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_finance_close_automation",
+  "skill_id": "skl_sql",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_finance_close_automation",
+  "skill_id": "skl_python",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_finance_close_automation",
+  "skill_id": "skl_change_management",
+  "min_level": 2,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_mobile_driver_app",
+  "skill_id": "skl_typescript",
+  "min_level": 4,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_mobile_driver_app",
+  "skill_id": "skl_ui_design",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_mobile_driver_app",
+  "skill_id": "skl_ux_research",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_mobile_driver_app",
+  "skill_id": "skl_product_discovery",
+  "min_level": 3,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_hackathon_tooling",
+  "skill_id": "skl_python",
+  "min_level": 2,
+  "importance": 1.0
+ },
+ {
+  "tenant_id": "t_demo",
+  "project_id": "prj_hackathon_tooling",
+  "skill_id": "skl_coaching",
+  "min_level": 2,
+  "importance": 1.0
+ }
+]

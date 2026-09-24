@@ -1,0 +1,218 @@
+[
+ {
+  "id": "skl_python",
+  "tenant_id": "t_demo",
+  "name": "Python",
+  "category": "Engineering",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_typescript",
+  "tenant_id": "t_demo",
+  "name": "TypeScript",
+  "category": "Engineering",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_aws",
+  "tenant_id": "t_demo",
+  "name": "AWS",
+  "category": "Engineering",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_kubernetes",
+  "tenant_id": "t_demo",
+  "name": "Kubernetes",
+  "category": "Engineering",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_api_design",
+  "tenant_id": "t_demo",
+  "name": "API Design",
+  "category": "Engineering",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_cybersecurity",
+  "tenant_id": "t_demo",
+  "name": "Cybersecurity",
+  "category": "Engineering",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_sql",
+  "tenant_id": "t_demo",
+  "name": "SQL",
+  "category": "Data & AI",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_data_engineering",
+  "tenant_id": "t_demo",
+  "name": "Data Engineering",
+  "category": "Data & AI",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_machine_learning",
+  "tenant_id": "t_demo",
+  "name": "Machine Learning",
+  "category": "Data & AI",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_ux_research",
+  "tenant_id": "t_demo",
+  "name": "UX Research",
+  "category": "Design & Product",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_ui_design",
+  "tenant_id": "t_demo",
+  "name": "UI Design",
+  "category": "Design & Product",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_product_discovery",
+  "tenant_id": "t_demo",
+  "name": "Product Discovery",
+  "category": "Design & Product",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_roadmapping",
+  "tenant_id": "t_demo",
+  "name": "Roadmapping",
+  "category": "Design & Product",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_agile_delivery",
+  "tenant_id": "t_demo",
+  "name": "Agile Delivery",
+  "category": "Delivery",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_program_management",
+  "tenant_id": "t_demo",
+  "name": "Program Management",
+  "category": "Delivery",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_risk_management",
+  "tenant_id": "t_demo",
+  "name": "Risk Management",
+  "category": "Delivery",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_change_management",
+  "tenant_id": "t_demo",
+  "name": "Change Management",
+  "category": "Delivery",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_vendor_management",
+  "tenant_id": "t_demo",
+  "name": "Vendor Management",
+  "category": "Delivery",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_stakeholder_communication",
+  "tenant_id": "t_demo",
+  "name": "Stakeholder Communication",
+  "category": "Delivery",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_coaching",
+  "tenant_id": "t_demo",
+  "name": "Coaching",
+  "category": "People",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_recruiting",
+  "tenant_id": "t_demo",
+  "name": "Recruiting",
+  "category": "People",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_supply_chain",
+  "tenant_id": "t_demo",
+  "name": "Supply Chain",
+  "category": "Domain",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_gdpr_compliance",
+  "tenant_id": "t_demo",
+  "name": "GDPR & Compliance",
+  "category": "Domain",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_financial_reporting",
+  "tenant_id": "t_demo",
+  "name": "Financial Reporting",
+  "category": "Domain",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_enterprise_sales",
+  "tenant_id": "t_demo",
+  "name": "Enterprise Sales",
+  "category": "Commercial",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_customer_success",
+  "tenant_id": "t_demo",
+  "name": "Customer Success",
+  "category": "Commercial",
+  "parent_id": null,
+  "external_uri": null
+ },
+ {
+  "id": "skl_negotiation",
+  "tenant_id": "t_demo",
+  "name": "Negotiation",
+  "category": "Commercial",
+  "parent_id": null,
+  "external_uri": null
+ }
+]

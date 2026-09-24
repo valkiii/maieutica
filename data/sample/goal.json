@@ -1,0 +1,47 @@
+[
+ {
+  "id": "gol_vision",
+  "tenant_id": "t_demo",
+  "name": "Become Europe's default freight-visibility platform",
+  "level": "vision",
+  "parent_id": null,
+  "owner_id": null,
+  "period": "2026-2027"
+ },
+ {
+  "id": "gol_growth",
+  "tenant_id": "t_demo",
+  "name": "Grow recurring revenue 30%",
+  "level": "objective",
+  "parent_id": "gol_vision",
+  "owner_id": null,
+  "period": "2026-2027"
+ },
+ {
+  "id": "gol_platform",
+  "tenant_id": "t_demo",
+  "name": "Modernise the platform, cut cloud cost 20%",
+  "level": "objective",
+  "parent_id": "gol_vision",
+  "owner_id": null,
+  "period": "2026-2027"
+ },
+ {
+  "id": "gol_ops",
+  "tenant_id": "t_demo",
+  "name": "Automate operations end to end",
+  "level": "objective",
+  "parent_id": "gol_vision",
+  "owner_id": null,
+  "period": "2026-2027"
+ },
+ {
+  "id": "gol_trust",
+  "tenant_id": "t_demo",
+  "name": "Earn enterprise trust (security and compliance)",
+  "level": "objective",
+  "parent_id": "gol_vision",
+  "owner_id": null,
+  "period": "2026-2027"
+ }
+]
