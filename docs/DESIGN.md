@@ -149,12 +149,33 @@ In the product an LLM does the interpretation and calls these same functions as 
 
 **Onboarding.** Claims carry evidence, confidence and source; a CV alone never scores above Advanced (4). Nothing is written to `person_skill` until the person confirms; each confirmed CV claim also writes an `evidence` row.
 
+## 9. Board integration (Jira and Kanban)
+
+Code: `integrations/boards.py` (pure functions, plus `JiraClient`). UI: the Jira / Kanban tab and the advisor's "Preview Jira tickets".
+
+**Board -> graph**
+* Adapters normalise a Jira issue (REST v3 shape, ADF descriptions flattened) or a generic Kanban CSV row into one ticket dict.
+* `map_tickets()` resolves assignees through `external_identity` (Jira `accountId`, or e-mail for CSV; never by name), links each ticket to a project through `project.external_ref` (the Jira key) and detects skills from labels, components and title with the same `skill_alias` table the CV reader uses. Result: `work_item` and `work_item_skill` rows.
+* **Observed allocation**: story points in flight, or closed in the last 30 days, per person and project; about 20 points = 1 FTE-month (a calibration constant, `POINTS_PER_FTE_MONTH`). Compared with the planned allocation, this shows people who are over-committed or "not visible in Jira".
+* **Concentration**: three or more open tickets on one skill in a project with at least 75% on one person. Combined with the fragility analysis this yields the **Key-person** signal on a card.
+* **Skill evidence**: tickets are evidence, not claims. A ticket can raise the confidence of an existing claim (to 0.85, source `project_inferred`), or *propose* a new skill (`evidence.status = proposed`) that waits for the person to confirm. Applying a sync never writes to `person_skill` for a new skill.
+* **Suggested assignees** for an unassigned ticket: skill fit x free capacity, with a small bonus for people already on the project. A suggestion for the team lead; nothing is reassigned in Jira.
+
+**Graph -> board**: `build_issue_payloads()` turns an approved use case into one epic and one story per skill (points from the required level, owner from the proposed team, a `hiring` story for skills nobody can cover). Two calls: `POST /rest/api/3/issue` for the epic, then `POST /rest/api/3/issue/bulk` for the stories with the epic as parent.
+
+**What is verified and what is not.** The mapping, analyses and payload builders are unit-tested (`tests/test_boards.py`), the browser implementation is checked against the Python one on the same fixture (`tests/check_explorer.js`, parity of observed allocation and evidence), and `JiraClient` is exercised against a fake transport (token pagination on `POST /rest/api/3/search/jql`, basic auth, epic-before-children). It has **not** been run against a live Jira Cloud site. Before a pilot: confirm the story-points field id (`JIRA_POINTS_FIELD`, default `customfield_10016`), the issue types and workflow status names, and API token scopes. The demo fixture (`data/sample/jira_issues.json`) follows Atlassian's documented response shape.
+
+**Privacy.** Board data is work data about people. Keep the same rules as elsewhere: read-only by default, explicit sources, no ranking of individuals by ticket counts. "Observed allocation" is a planning check against the plan, not a productivity score, and should not be shown as one.
+
 ## 9. Repo layout
 
 ```
 schema/schema.sql            tables, edges, derived views (SQLite and Postgres compatible)
 data/sample/*.json           synthetic company "Aldermoor Systems", one file per table
 scripts/generate_sample.py   regenerates the sample data (hand-designed stories inside)
+scripts/gen_tickets.py       generates the demo Jira export (REST v3 shape) and its planted stories
+integrations/boards.py       Jira + Kanban CSV adapters, mapping, analyses, issue payloads, JiraClient
+data/config/ticket_titles.json  ticket title library per skill (fixtures and the advisor's Jira export)
 scripts/build_viz.py         assembles viz/src/* + data -> viz/maieutica-explorer.html (fails on JS syntax errors)
 viz/src/                     style.css, body.html, js/00-core ... 99-main (one module per view)
 scripts/cdp.js               dependency-free Chrome driver used for tests and recording
@@ -162,6 +183,7 @@ scripts/record_clips.js      records the demo clips for the deck (real interacti
 deck/index.html              the pitch deck (16:9, keyboard nav, speaker notes on N, click a clip to enlarge)
 deck/clips/                  recorded clips referenced by the deck
 tests/test_schema.py         loads sample data into the schema and checks the derived views
+tests/test_boards.py         board integration: mapping, CSV adapter, payloads, client on a fake transport
 tests/check_explorer.js      end-to-end test of the built explorer in headless Chrome
 ```
 
@@ -172,4 +194,5 @@ python3 -m unittest discover -s tests
 python3 scripts/build_viz.py
 node tests/check_explorer.js
 node scripts/record_clips.js          # optional: re-record the deck clips
+python3 integrations/boards.py map data/sample/jira_issues.json   # what a Jira sync derives
 ```

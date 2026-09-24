@@ -1,0 +1,654 @@
+[
+ {
+  "work_item_id": "wi_port_2",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_port_3",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_port_4",
+  "skill_id": "skl_ui_design"
+ },
+ {
+  "work_item_id": "wi_port_5",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_port_6",
+  "skill_id": "skl_ui_design"
+ },
+ {
+  "work_item_id": "wi_port_7",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_port_8",
+  "skill_id": "skl_api_design"
+ },
+ {
+  "work_item_id": "wi_port_9",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_port_10",
+  "skill_id": "skl_ui_design"
+ },
+ {
+  "work_item_id": "wi_port_11",
+  "skill_id": "skl_ux_research"
+ },
+ {
+  "work_item_id": "wi_port_12",
+  "skill_id": "skl_ux_research"
+ },
+ {
+  "work_item_id": "wi_port_13",
+  "skill_id": "skl_ux_research"
+ },
+ {
+  "work_item_id": "wi_port_14",
+  "skill_id": "skl_agile_delivery"
+ },
+ {
+  "work_item_id": "wi_port_15",
+  "skill_id": "skl_ux_research"
+ },
+ {
+  "work_item_id": "wi_port_16",
+  "skill_id": "skl_agile_delivery"
+ },
+ {
+  "work_item_id": "wi_port_17",
+  "skill_id": "skl_agile_delivery"
+ },
+ {
+  "work_item_id": "wi_port_18",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_port_19",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_port_20",
+  "skill_id": "skl_ui_design"
+ },
+ {
+  "work_item_id": "wi_port_21",
+  "skill_id": "skl_ux_research"
+ },
+ {
+  "work_item_id": "wi_port_22",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_eta_2",
+  "skill_id": "skl_machine_learning"
+ },
+ {
+  "work_item_id": "wi_eta_3",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_eta_4",
+  "skill_id": "skl_machine_learning"
+ },
+ {
+  "work_item_id": "wi_eta_5",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_eta_6",
+  "skill_id": "skl_machine_learning"
+ },
+ {
+  "work_item_id": "wi_eta_7",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_eta_8",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_eta_9",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_eta_10",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_eta_11",
+  "skill_id": "skl_machine_learning"
+ },
+ {
+  "work_item_id": "wi_eta_12",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_eta_13",
+  "skill_id": "skl_machine_learning"
+ },
+ {
+  "work_item_id": "wi_eta_14",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_cloud_2",
+  "skill_id": "skl_kubernetes"
+ },
+ {
+  "work_item_id": "wi_cloud_3",
+  "skill_id": "skl_kubernetes"
+ },
+ {
+  "work_item_id": "wi_cloud_4",
+  "skill_id": "skl_kubernetes"
+ },
+ {
+  "work_item_id": "wi_cloud_5",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_cloud_6",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_cloud_7",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_cloud_8",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_cloud_9",
+  "skill_id": "skl_cybersecurity"
+ },
+ {
+  "work_item_id": "wi_cloud_10",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_cloud_11",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_cloud_12",
+  "skill_id": "skl_kubernetes"
+ },
+ {
+  "work_item_id": "wi_cloud_13",
+  "skill_id": "skl_program_management"
+ },
+ {
+  "work_item_id": "wi_cloud_14",
+  "skill_id": "skl_program_management"
+ },
+ {
+  "work_item_id": "wi_cloud_15",
+  "skill_id": "skl_program_management"
+ },
+ {
+  "work_item_id": "wi_cloud_16",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_cloud_17",
+  "skill_id": "skl_kubernetes"
+ },
+ {
+  "work_item_id": "wi_cloud_18",
+  "skill_id": "skl_cybersecurity"
+ },
+ {
+  "work_item_id": "wi_cloud_19",
+  "skill_id": "skl_kubernetes"
+ },
+ {
+  "work_item_id": "wi_data_2",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_3",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_data_4",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_5",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_6",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_data_7",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_8",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_data_9",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_data_10",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_11",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_data_12",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_13",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_14",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_15",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_data_16",
+  "skill_id": "skl_data_engineering"
+ },
+ {
+  "work_item_id": "wi_data_17",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_wh_2",
+  "skill_id": "skl_program_management"
+ },
+ {
+  "work_item_id": "wi_wh_3",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_4",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_5",
+  "skill_id": "skl_vendor_management"
+ },
+ {
+  "work_item_id": "wi_wh_6",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_7",
+  "skill_id": "skl_vendor_management"
+ },
+ {
+  "work_item_id": "wi_wh_8",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_9",
+  "skill_id": "skl_change_management"
+ },
+ {
+  "work_item_id": "wi_wh_10",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_11",
+  "skill_id": "skl_change_management"
+ },
+ {
+  "work_item_id": "wi_wh_12",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_13",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_14",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_15",
+  "skill_id": "skl_program_management"
+ },
+ {
+  "work_item_id": "wi_wh_16",
+  "skill_id": "skl_change_management"
+ },
+ {
+  "work_item_id": "wi_wh_17",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_18",
+  "skill_id": "skl_program_management"
+ },
+ {
+  "work_item_id": "wi_wh_19",
+  "skill_id": "skl_supply_chain"
+ },
+ {
+  "work_item_id": "wi_wh_20",
+  "skill_id": "skl_program_management"
+ },
+ {
+  "work_item_id": "wi_iso_2",
+  "skill_id": "skl_cybersecurity"
+ },
+ {
+  "work_item_id": "wi_iso_3",
+  "skill_id": "skl_gdpr_compliance"
+ },
+ {
+  "work_item_id": "wi_iso_4",
+  "skill_id": "skl_cybersecurity"
+ },
+ {
+  "work_item_id": "wi_iso_5",
+  "skill_id": "skl_gdpr_compliance"
+ },
+ {
+  "work_item_id": "wi_iso_6",
+  "skill_id": "skl_gdpr_compliance"
+ },
+ {
+  "work_item_id": "wi_iso_7",
+  "skill_id": "skl_risk_management"
+ },
+ {
+  "work_item_id": "wi_iso_8",
+  "skill_id": "skl_change_management"
+ },
+ {
+  "work_item_id": "wi_iso_9",
+  "skill_id": "skl_change_management"
+ },
+ {
+  "work_item_id": "wi_iso_10",
+  "skill_id": "skl_cybersecurity"
+ },
+ {
+  "work_item_id": "wi_iso_11",
+  "skill_id": "skl_gdpr_compliance"
+ },
+ {
+  "work_item_id": "wi_iso_12",
+  "skill_id": "skl_gdpr_compliance"
+ },
+ {
+  "work_item_id": "wi_iso_13",
+  "skill_id": "skl_cybersecurity"
+ },
+ {
+  "work_item_id": "wi_eu_2",
+  "skill_id": "skl_enterprise_sales"
+ },
+ {
+  "work_item_id": "wi_eu_3",
+  "skill_id": "skl_enterprise_sales"
+ },
+ {
+  "work_item_id": "wi_eu_4",
+  "skill_id": "skl_negotiation"
+ },
+ {
+  "work_item_id": "wi_eu_5",
+  "skill_id": "skl_customer_success"
+ },
+ {
+  "work_item_id": "wi_eu_6",
+  "skill_id": "skl_customer_success"
+ },
+ {
+  "work_item_id": "wi_eu_7",
+  "skill_id": "skl_gdpr_compliance"
+ },
+ {
+  "work_item_id": "wi_eu_8",
+  "skill_id": "skl_enterprise_sales"
+ },
+ {
+  "work_item_id": "wi_eu_9",
+  "skill_id": "skl_enterprise_sales"
+ },
+ {
+  "work_item_id": "wi_eu_10",
+  "skill_id": "skl_enterprise_sales"
+ },
+ {
+  "work_item_id": "wi_eu_11",
+  "skill_id": "skl_negotiation"
+ },
+ {
+  "work_item_id": "wi_eu_12",
+  "skill_id": "skl_enterprise_sales"
+ },
+ {
+  "work_item_id": "wi_eu_13",
+  "skill_id": "skl_negotiation"
+ },
+ {
+  "work_item_id": "wi_price_2",
+  "skill_id": "skl_product_discovery"
+ },
+ {
+  "work_item_id": "wi_price_3",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_price_4",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_price_5",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_price_6",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_price_7",
+  "skill_id": "skl_product_discovery"
+ },
+ {
+  "work_item_id": "wi_price_8",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_price_9",
+  "skill_id": "skl_product_discovery"
+ },
+ {
+  "work_item_id": "wi_price_10",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_price_11",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_price_12",
+  "skill_id": "skl_negotiation"
+ },
+ {
+  "work_item_id": "wi_price_13",
+  "skill_id": "skl_product_discovery"
+ },
+ {
+  "work_item_id": "wi_price_14",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_price_15",
+  "skill_id": "skl_product_discovery"
+ },
+ {
+  "work_item_id": "wi_price_16",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_api_2",
+  "skill_id": "skl_api_design"
+ },
+ {
+  "work_item_id": "wi_api_3",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_api_4",
+  "skill_id": "skl_api_design"
+ },
+ {
+  "work_item_id": "wi_api_5",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_api_6",
+  "skill_id": "skl_kubernetes"
+ },
+ {
+  "work_item_id": "wi_api_7",
+  "skill_id": "skl_api_design"
+ },
+ {
+  "work_item_id": "wi_api_8",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_api_9",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_api_10",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_api_11",
+  "skill_id": "skl_aws"
+ },
+ {
+  "work_item_id": "wi_api_12",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_api_13",
+  "skill_id": "skl_api_design"
+ },
+ {
+  "work_item_id": "wi_api_14",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_api_15",
+  "skill_id": "skl_api_design"
+ },
+ {
+  "work_item_id": "wi_api_16",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_fin_2",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_fin_3",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_fin_4",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_fin_5",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_fin_6",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_fin_7",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_fin_8",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_fin_9",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_fin_10",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_fin_11",
+  "skill_id": "skl_financial_reporting"
+ },
+ {
+  "work_item_id": "wi_fin_12",
+  "skill_id": "skl_sql"
+ },
+ {
+  "work_item_id": "wi_mob_2",
+  "skill_id": "skl_typescript"
+ },
+ {
+  "work_item_id": "wi_mob_3",
+  "skill_id": "skl_ui_design"
+ },
+ {
+  "work_item_id": "wi_mob_4",
+  "skill_id": "skl_ux_research"
+ },
+ {
+  "work_item_id": "wi_mob_5",
+  "skill_id": "skl_product_discovery"
+ },
+ {
+  "work_item_id": "wi_hack_2",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_hack_3",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_hack_4",
+  "skill_id": "skl_coaching"
+ },
+ {
+  "work_item_id": "wi_hack_5",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_hack_6",
+  "skill_id": "skl_coaching"
+ },
+ {
+  "work_item_id": "wi_hack_7",
+  "skill_id": "skl_python"
+ },
+ {
+  "work_item_id": "wi_hack_8",
+  "skill_id": "skl_coaching"
+ }
+]

@@ -300,10 +300,31 @@ ALIASES = {
 }
 skill_alias = [{"skill_id": SKILL_ID[k], "alias": a} for k, v in ALIASES.items() for a in v]
 
+# ------------------------------------------------------------------ board integration (Jira-shaped export -> work items)
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import gen_tickets  # noqa: E402  (scripts/ is on sys.path when run directly)
+from integrations import boards  # noqa: E402
+
+for _p in projects:
+    _p["external_ref"] = gen_tickets.KEYS[_p["name"]]
+_titles = json.loads((Path(__file__).resolve().parent.parent / "data" / "config" / "ticket_titles.json").read_text(encoding="utf-8"))
+jira_issues, external_identity = gen_tickets.build(PEOPLE, PERSON_ID, PROJECTS, _titles, T)
+_ctx = {"tenant": T, "people_by_account": {i["external_id"]: i["person_id"] for i in external_identity}, "people_by_email": {},
+        "project_by_key": {p["external_ref"]: p["id"] for p in projects}, "skills": skills, "aliases": skill_alias}
+_mapped = boards.map_tickets([boards.from_jira_issue(i) for i in jira_issues], _ctx)
+work_item, work_item_skill = _mapped["work_item"], _mapped["work_item_skill"]
+assert not _mapped["unmatched_assignees"] and not _mapped["unknown_projects"], _mapped
+_obs = boards.observed_allocation(work_item)
+_props = boards.evidence_proposals(work_item, work_item_skill, person_skill)
+jira_summary = {"work_items": len(work_item), "assigned": sum(1 for w in work_item if w["assignee_id"]), "skill_links": len(work_item_skill),
+                "observed_pairs": len(_obs), "observed_sum_pct": sum(_obs.values()),
+                "evidence": {"raise": sum(1 for p in _props if p["kind"] == "raise"), "new": sum(1 for p in _props if p["kind"] == "new")}}
+
 TABLES = {
     "tenant": [{"id": T, "name": "Aldermoor Systems (synthetic demo)"}],
     "org_unit": org_units, "person": people, "skill": skills, "project": projects, "goal": goals,
-    "cost_band": cost_band, "skill_alias": skill_alias, "hiring_need": [], "person_aspiration": [], "evidence": [],
+    "cost_band": cost_band, "skill_alias": skill_alias, "external_identity": external_identity, "work_item": work_item, "work_item_skill": work_item_skill, "hiring_need": [], "person_aspiration": [], "evidence": [],
     "person_skill": person_skill, "person_project": person_project,
     "project_skill": project_skill, "project_goal": project_goal,
 }
@@ -312,4 +333,6 @@ if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     for table, rows in TABLES.items():
         (OUT / f"{table}.json").write_text(json.dumps(rows, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    print({k: len(v) for k, v in TABLES.items()})
+    (OUT / "jira_issues.json").write_text(json.dumps({"total": len(jira_issues), "issues": jira_issues}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    (OUT / "jira_summary.json").write_text(json.dumps(jira_summary, indent=1) + "\n", encoding="utf-8")
+    print({k: len(v) for k, v in TABLES.items()}, jira_summary)

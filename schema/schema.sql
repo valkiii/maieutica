@@ -180,6 +180,43 @@ CREATE TABLE person_aspiration (
   PRIMARY KEY (person_id, skill_id, kind)
 );
 
+-- ------------------------------------------------------------- boards (Jira, Kanban)
+-- Who a person is in another system. Assignees are matched on this, never on names.
+CREATE TABLE external_identity (
+  tenant_id   TEXT NOT NULL REFERENCES tenant(id),
+  person_id   TEXT NOT NULL REFERENCES person(id),
+  system      TEXT NOT NULL,                          -- jira | azure_devops | trello ...
+  external_id TEXT NOT NULL,
+  PRIMARY KEY (system, external_id)
+);
+
+-- Tickets, normalised. Stored beside the graph: they are evidence and load, not skills.
+CREATE TABLE work_item (
+  id              TEXT PRIMARY KEY,
+  tenant_id       TEXT NOT NULL REFERENCES tenant(id),
+  project_id      TEXT NOT NULL REFERENCES project(id),
+  external_ref    TEXT NOT NULL,                      -- ticket key, e.g. CLOUD-12
+  title           TEXT NOT NULL,
+  item_type       TEXT,                               -- Epic | Story | Task | Bug
+  status          TEXT,
+  status_category TEXT CHECK (status_category IN ('new', 'indeterminate', 'done')),
+  story_points    REAL,
+  assignee_id     TEXT REFERENCES person(id),
+  created_on      TEXT,
+  resolved_on     TEXT,
+  blocked         INTEGER NOT NULL DEFAULT 0,
+  labels          TEXT,
+  source          TEXT
+);
+
+CREATE TABLE work_item_skill (                        -- skills a ticket exercises (from labels, components, title)
+  work_item_id TEXT NOT NULL REFERENCES work_item(id),
+  skill_id     TEXT NOT NULL REFERENCES skill(id),
+  PRIMARY KEY (work_item_id, skill_id)
+);
+
+CREATE INDEX ix_work_item_project  ON work_item(project_id);
+CREATE INDEX ix_work_item_assignee ON work_item(assignee_id);
 CREATE INDEX ix_person_skill_skill    ON person_skill(skill_id);
 CREATE INDEX ix_person_project_proj   ON person_project(project_id);
 CREATE INDEX ix_project_goal_goal     ON project_goal(goal_id);
@@ -266,3 +303,14 @@ JOIN person_project pp ON pp.project_id = p.id AND pp.valid_to IS NULL
 JOIN person pe         ON pe.id = pp.person_id
 JOIN cost_band cb      ON cb.id = pe.cost_band_id
 GROUP BY p.tenant_id, p.id, p.name, p.status, p.planned_months, p.expected_value_eur, p.value_confidence;
+
+-- Points per person and project, by state. The application turns recent points into an
+-- "observed allocation" (about 20 points = 1 FTE-month) and compares it with the plan.
+CREATE VIEW v_person_project_points AS
+SELECT tenant_id, assignee_id AS person_id, project_id,
+       SUM(CASE WHEN status_category = 'indeterminate' THEN story_points ELSE 0 END) AS open_points,
+       SUM(CASE WHEN status_category = 'done' THEN story_points ELSE 0 END)          AS done_points,
+       COUNT(*) AS items
+FROM work_item
+WHERE assignee_id IS NOT NULL AND item_type <> 'Epic'
+GROUP BY tenant_id, assignee_id, project_id;

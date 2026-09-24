@@ -1,0 +1,11 @@
+{
+ "work_items": 175,
+ "assigned": 137,
+ "skill_links": 163,
+ "observed_pairs": 54,
+ "observed_sum_pct": 2055,
+ "evidence": {
+  "raise": 5,
+  "new": 6
+ }
+}

@@ -15,6 +15,7 @@
     <button class="tab" role="tab" id="t-leaver" aria-controls="v-leaver" aria-selected="false">If someone leaves</button>
     <button class="tab" role="tab" id="t-onboard" aria-controls="v-onboard" aria-selected="false">Onboarding chat</button>
     <button class="tab" role="tab" id="t-usecase" aria-controls="v-usecase" aria-selected="false">Use-case advisor</button>
+    <button class="tab" role="tab" id="t-jira" aria-controls="v-jira" aria-selected="false">Jira / Kanban</button>
   </nav>
 
   <!-- 1. LAYERS -->
@@ -124,5 +125,21 @@
       </div>
       <div class="panel side" id="uc-side"></div>
     </div>
+  </section>
+
+  <!-- 8. JIRA / KANBAN -->
+  <section class="view" id="v-jira" role="tabpanel" aria-labelledby="t-jira" hidden>
+    <p class="lede">Your teams already plan in a board. Maieutica reads it: <b>who is really working on what</b>, <b>which skills each ticket needs</b>, and where work <b>piles up on one person</b>. It flags key-person risk on the card, suggests who could take an unassigned ticket, and <b>never changes anything in Jira</b> without you. The reverse also works: a use-case proposal becomes an epic with skill-tagged stories.</p>
+    <div class="panel jr-conn" id="jr-conn"></div>
+    <div class="jr-bar">
+      <label for="jr-project"><b>Project</b></label><select id="jr-project"></select>
+      <label class="chk"><input type="checkbox" id="jr-signals" checked> Show Maieutica signals</label>
+      <span class="note" id="jr-counts"></span>
+    </div>
+    <div class="split">
+      <div class="board" id="jr-board"></div>
+      <aside class="panel insp" id="insp-jira" aria-live="polite"></aside>
+    </div>
+    <div class="cards" id="jr-cards"></div>
   </section>
 </div>

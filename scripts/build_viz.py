@@ -7,9 +7,10 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "viz" / "src"
 TABLES = ["tenant", "cost_band", "org_unit", "person", "skill", "skill_alias", "project", "goal",
           "person_skill", "person_project", "project_skill", "project_goal",
-          "hiring_need", "person_aspiration", "evidence"]
+          "hiring_need", "person_aspiration", "evidence", "external_identity", "work_item", "work_item_skill"]
 
 data = {t: json.loads((ROOT / "data" / "sample" / f"{t}.json").read_text(encoding="utf-8")) for t in TABLES}
+data["ticket_titles"] = json.loads((ROOT / "data" / "config" / "ticket_titles.json").read_text(encoding="utf-8"))
 blob = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 import base64
 def data_uri(path):

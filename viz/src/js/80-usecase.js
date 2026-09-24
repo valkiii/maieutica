@@ -32,7 +32,7 @@ const UC_TEMPLATES = [
 const UC_EXAMPLES = [['Predict churn for our top accounts', 'churn'], ['Build an AI copilot for dispatchers', 'copilot'], ['Zero-downtime multi-region platform', 'multiregion'], ['Launch in the Nordics', 'nordics'], ['Automate invoice matching in finance', 'invoice']];
 const ROLE_FOR = { 'Kubernetes': 'Site Reliability Engineer', 'Cybersecurity': 'Security Engineer', 'Machine Learning': 'ML Engineer', 'GDPR & Compliance': 'Privacy & Compliance Officer', 'Enterprise Sales': 'Enterprise Account Executive', 'Data Engineering': 'Data Engineer', 'AWS': 'Cloud Engineer', 'Python': 'Software Engineer', 'TypeScript': 'Frontend Engineer', 'UX Research': 'UX Researcher', 'Supply Chain': 'Supply Chain Analyst', 'Financial Reporting': 'Finance Analyst' };
 
-const UC = { tpl: null, text: '', skills: {}, months: 6, fteMonths: 12, A: {}, team: [], hires: [], allowRelease: true, added: false, busy: false, seq: 0 };
+const UC = { jira: null, projectId: null, tpl: null, text: '', skills: {}, months: 6, fteMonths: 12, A: {}, team: [], hires: [], allowRelease: true, added: false, busy: false, seq: 0 };
 let _skillRe = null;
 function matchSkills(text) {
   if (!_skillRe) _skillRe = D.skills.map(s => ({ sid: s.id, res: [...new Set([s.name.toLowerCase(), ...D.skill_alias.filter(a => a.skill_id === s.id).map(a => a.alias)])].map(t => new RegExp('(^|[^a-z0-9])' + escRe(t) + '(?![a-z0-9])', 'i')) }));
@@ -121,7 +121,7 @@ function proposeTeam(skills, months, fteMonths, allowRelease) {
 function ucRun(text) {
   const r = ucInterpret(text);
   if (!r) return null;
-  Object.assign(UC, { text, tpl: r.tpl, skills: r.skills, months: r.months, fteMonths: r.fteMonths, A: r.A, extra: r.extra, added: false });
+  Object.assign(UC, { text, tpl: r.tpl, skills: r.skills, months: r.months, fteMonths: r.fteMonths, A: r.A, extra: r.extra, added: false, jira: null, projectId: null });
   ucTeam();
   return r;
 }
@@ -183,11 +183,13 @@ function renderUcSide() {
     <p class="note" style="margin-top:6px">${UC.team.length} people is the smallest team that covers every skill some one can actually staff${UC.teamFte < UC.need ? '' : ' and reaches the ' + UC.need.toFixed(1) + ' FTE needed'}. ${releasing.length ? 'Some time comes from under-optimised projects.' : ''}</p>
     <label style="display:flex;gap:8px;align-items:center;margin-top:8px;font-size:13px"><input type="checkbox" id="uc-release" ${UC.allowRelease ? 'checked' : ''}> Allow freeing people from under-optimised work</label>
     ${UC.hires.length ? `<h4>Hiring recommendation</h4>${UC.hires.map(h => `<div class="hire"><b>${esc(h.role)} · ${h.fte.toFixed(1)} FTE · ${UC.months} months</b>${esc(h.reason)}<br>Must have: ${h.skills.map(s => `${esc(Skills.get(s.sid).name)} ${s.min}+`).join(', ')}.${h.upskill.length ? `<br><span class="note">Alternative: upskill ${h.upskill.map(u => `${esc(u.who)} in ${esc(Skills.get(u.sid).name)} (${u.from}→${u.to})`).join(', ')}, if the timeline allows.</span>` : ''}<br><span class="note">Estimated cost incl. ${pct(RECRUIT_FEE_RATE)} recruiting fee: ${eur(hireCost(h.fte, UC.months))}. Cheaper than a bad staffing decision.</span></div>`).join('')}` : ''}
+    ${ucJiraHTML()}
     <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn" id="uc-add" ${UC.added ? 'disabled' : ''}>${UC.added ? 'Added to portfolio' : 'Add to portfolio as proposed'}</button>${UC.added ? '<button class="btn secondary" id="uc-see">See it in Portfolio economics</button>' : ''}</div>`;
   renderUcNumbers();
   tp.assume.forEach(a => { $('#ai-' + a.id).addEventListener('input', e => { UC.A[a.id] = +e.target.value; $('#ao-' + a.id).textContent = e.target.value + (a.unit ? ' ' + a.unit : ''); renderUcNumbers(); }); });
   $('#uc-release').addEventListener('change', e => { UC.allowRelease = e.target.checked; ucTeam(); renderUcSide(); });
   $('#uc-add').addEventListener('click', ucAdd);
+  wireUcJira();
   const see = $('#uc-see'); if (see) see.addEventListener('click', () => showTab('econ'));
   wireJumps(el, k => { showTab('layers'); LAY.pinned = k; renderLayers(); });
 }
@@ -230,6 +232,7 @@ async function ucHandle(text) {
 function ucAdd() {
   if (UC.added || !UC.tpl) return;
   const n = ucNumbers(), T = D.tenant[0].id, tp = UC.tpl, jid = 'prj_uc_' + tp.id + '_' + (D.projects.length + 1);
+  UC.projectId = jid;
   const start = '2026-11-01', s = new Date(start), e = new Date(s); e.setMonth(e.getMonth() + Math.round(UC.months));
   D.project.push({ id: jid, tenant_id: T, name: tp.title, description: UC.text, status: 'proposed', start_on: start, end_on: e.toISOString().slice(0, 10), planned_months: UC.months, expected_value_eur: Math.round(n.value), value_type: tp.vtype, value_basis: tp.basis(UC.A, { fteMonths: n.fte * n.months }), value_confidence: tp.conf, external_ref: null });
   Object.entries(UC.skills).forEach(([sid, min]) => D.project_skill.push({ tenant_id: T, project_id: jid, skill_id: sid, min_level: min, importance: 1 }));
@@ -239,4 +242,69 @@ function ucAdd() {
   UC.added = true; refreshAll(); renderUcSide();
   botSay('uc', `Added as <b>proposed</b>. It now shows in the graph and in Portfolio economics, but it does not consume anyone's capacity until it is approved.`);
   setQuick('uc', [{ label: 'See it in Portfolio economics', fn: () => showTab('econ') }, { label: 'Try another idea', ghost: true, fn: () => { botSay('uc', 'Go ahead.'); setUcExamples(); } }]);
+}
+
+
+/* ---- graph -> board: a proposal becomes a Jira epic with skill-tagged stories
+   (mirrors build_issue_payloads() in integrations/boards.py; nothing is sent from this page) */
+const skillLabel = n => n.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const pointsFor = min => min >= 5 ? 8 : min === 4 ? 5 : 3;
+function ucJiraPlan() {
+  const tp = UC.tpl, words = tp.title.split(/[^A-Za-z]+/).filter(Boolean);
+  let key = words.map(w => w[0]).join('').toUpperCase().slice(0, 4);
+  if (key.length < 3) key = (words[0] || 'UC').slice(0, 4).toUpperCase();
+  const taken = new Set(D.projects.map(p => p.external_ref)); let k = key, i = 2; while (taken.has(k)) k = key + i++;
+  const hireOf = new Map(); UC.hires.forEach(h => h.skills.forEach(s => hireOf.set(s.sid, h)));
+  const usedHire = new Set(), stories = [];
+  Object.entries(UC.skills).sort((a, b) => b[1] - a[1]).forEach(([sid, min]) => {
+    const sk = Skills.get(sid).name, owner = UC.team.find(m => m.covers.includes(sid) && levelOf(m.pid, sid) >= min), hire = !owner && hireOf.get(sid);
+    if (hire && usedHire.has(hire)) return;
+    if (hire) usedHire.add(hire);
+    stories.push({ summary: hire ? `Hire: ${hire.role} (${hire.fte.toFixed(1)} FTE)` : (D.ticket_titles[sk] || [sk + ' work'])[0], skill: sk, sid, min_level: min,
+      assignee_person_id: owner ? owner.pid : null, hiring: !!hire, description: hire ? hire.reason : `Needs ${sk} at level ${min}+. Suggested owner from skills and free capacity.` });
+  });
+  return { key: k, title: tp.title, description: `${UC.text}\n\nValue basis: ${tp.basis(UC.A, { fteMonths: UC.fteMonths })}`, stories };
+}
+function jiraPayloads(plan) {
+  const acct = new Map((D.external_identity || []).filter(i => i.system === 'jira').map(i => [i.person_id, i.external_id]));
+  const adf = t => ({ type: 'doc', version: 1, content: String(t || '').split('\n\n').filter(Boolean).map(p => ({ type: 'paragraph', content: [{ type: 'text', text: p }] })) });
+  return {
+    epic: { fields: { project: { key: plan.key }, issuetype: { name: 'Epic' }, summary: plan.title, description: adf(plan.description), labels: ['maieutica'] } },
+    stories: plan.stories.map(s => ({ fields: { project: { key: plan.key }, issuetype: { name: 'Story' }, summary: s.summary, description: adf(s.description),
+      labels: ['maieutica', skillLabel(s.skill)].concat(s.hiring ? ['hiring'] : []), customfield_10016: pointsFor(s.min_level), parent: { key: '{epic-key}' },
+      ...(s.assignee_person_id && acct.get(s.assignee_person_id) ? { assignee: { accountId: acct.get(s.assignee_person_id) } } : {}) } })),
+  };
+}
+function ucJiraHTML() {
+  if (!UC.tpl) return '';
+  if (!UC.jira) return `<h4>Jira</h4><p class="note">Turn this proposal into an epic with one story per skill, owners suggested from the team above.</p><button class="btn secondary" id="uc-jira-btn" type="button" style="margin-top:8px">Preview Jira tickets</button>`;
+  const plan = ucJiraPlan(), made = UC.jira.created, P = jiraPayloads(plan), key = made ? made.epic.split('-')[0] : plan.key;
+  const rows = [`<div class="jr-row"><span class="mono">${key}-1</span><span><b>${esc(plan.title)}</b></span><span class="chip">Epic</span></div>`].concat(plan.stories.map((s, i) => {
+    const who = s.assignee_person_id ? People.get(s.assignee_person_id) : null;
+    return `<div class="jr-row"><span class="mono">${key}-${i + 2}</span><span>${esc(s.summary)}<br><span class="note">${who ? esc(who.full_name) : s.hiring ? 'requisition, no assignee' : 'unassigned'} · ${pointsFor(s.min_level)} pts · ${esc(skillLabel(s.skill))}</span></span><span class="chip ${s.hiring ? 'warn' : ''}">${s.hiring ? 'Hiring' : 'Story'}</span></div>`;
+  })).join('');
+  return `<h4>Jira</h4><div class="jira-box">${rows}
+    <details style="margin-top:8px"><summary>API payloads (Jira Cloud REST v3)</summary><pre class="payload">1) POST /rest/api/3/issue\n${esc(JSON.stringify(P.epic, null, 2))}\n\n2) POST /rest/api/3/issue/bulk   (${P.stories.length} stories, parent = key from step 1)\n${esc(JSON.stringify(P.stories[0], null, 2))}</pre></details>
+    ${made ? `<p style="margin-top:10px">${chip('created (demo)', 'ok')} ${made.stories.length + 1} tickets under <b>${esc(made.epic)}</b>. <span class="note">Nothing left this page. With credentials the same payloads are posted.</span></p><button class="btn" id="uc-open-board" type="button" style="margin-top:6px">Open the board</button>`
+      : `<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn" id="uc-jira-create" type="button">Create in Jira (demo)</button></div><p class="note" style="margin-top:6px">Demo: creates the tickets on the board in this app. Creating also adds the use case to the portfolio.</p>`}</div>`;
+}
+function wireUcJira() {
+  const pre = $('#uc-jira-btn'); if (pre) pre.addEventListener('click', () => { UC.jira = { created: null }; renderUcSide(); });
+  const cr = $('#uc-jira-create'); if (cr) cr.addEventListener('click', ucJiraCreate);
+  const op = $('#uc-open-board'); if (op) op.addEventListener('click', () => { JR.project = UC.projectId; JR.selected = null; renderJira(); showTab('jira'); });
+}
+function ucJiraCreate() {
+  if (!UC.added) ucAdd();
+  const plan = ucJiraPlan(), T = D.tenant[0].id, proj = D.project.find(p => p.id === UC.projectId), today = '2026-09-24';
+  proj.external_ref = plan.key;
+  const wi = (n, type, title, extra = {}) => ({ id: `wi_${plan.key.toLowerCase()}_${n}`, tenant_id: T, project_id: proj.id, external_ref: `${plan.key}-${n}`, title, item_type: type, status: 'To Do', status_category: 'new',
+    story_points: null, assignee_id: null, created_on: today, resolved_on: null, blocked: 0, labels: 'maieutica', source: 'maieutica', ...extra });
+  D.work_item.push(wi(1, 'Epic', plan.title));
+  plan.stories.forEach((s, i) => {
+    const w = wi(i + 2, 'Story', s.summary, { story_points: pointsFor(s.min_level), assignee_id: s.assignee_person_id, labels: 'maieutica,' + skillLabel(s.skill) + (s.hiring ? ',hiring' : '') });
+    D.work_item.push(w); D.work_item_skill.push({ work_item_id: w.id, skill_id: s.sid });
+  });
+  UC.jira = { created: { epic: `${plan.key}-1`, stories: plan.stories.map((s, i) => `${plan.key}-${i + 2}`) } };
+  refreshAll(); renderUcSide();
+  botSay('uc', `Created <b>${plan.stories.length + 1} tickets</b> under <b>${esc(plan.key)}-1</b> (demo: nothing left this page). Owners are suggestions from skills and free capacity; anyone can change them in Jira.`);
 }

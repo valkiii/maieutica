@@ -82,6 +82,39 @@ const expect = (name, ok, extra = '') => { console.log((ok ? 'PASS ' : 'FAIL ') 
   await b.eval('ucHandle("something about gardening")'); await b.waitFor('!UC.busy');
   expect('advisor: unknown idea is handled gracefully', await b.eval('!UC.tpl'));
 
+  // Jira / Kanban (start from pristine data: earlier tests onboarded a person and added a use case)
+  await b.eval('resetData()');
+  const summary = JSON.parse(require('fs').readFileSync(ROOT + '/data/sample/jira_summary.json', 'utf8'));
+  await b.click('#t-jira');
+  const boardN = await b.eval('document.querySelectorAll("#jr-board .tk").length'), expectN = await b.eval('WI.filter(w => w.item_type !== "Epic" && w.project_id === "prj_cloud_migration").length');
+  expect('jira: board renders every Cloud Migration ticket in four columns', boardN === expectN && boardN > 10 && await b.eval('document.querySelectorAll("#jr-board .col").length') === 4, boardN + ' cards');
+  expect('jira: JS and Python agree on observed allocation (parity)', await b.eval('[...observedMap().values()].reduce((a, b) => a + b, 0)') === summary.observed_sum_pct && await b.eval('observedMap().size') === summary.observed_pairs);
+  const props = await b.eval('(() => { const p = evidenceProps(); return { raise: p.filter(x => x.kind === "raise").length, nw: p.filter(x => x.kind === "new").length }; })()');
+  expect('jira: JS and Python agree on evidence proposals (parity)', props.raise === summary.evidence.raise && props.nw === summary.evidence.new, JSON.stringify(props));
+  expect('jira: Marta\'s Kubernetes tickets carry Key-person + Concentrated signals', await b.eval('WI.filter(w => w.project_id === "prj_cloud_migration" && w.assignee_id === "per_01" && (wiSkills.get(w.id) || []).includes("skl_kubernetes") && w.status_category !== "done").every(w => { const s = signalsOf(w).map(x => x.text); return s.includes("Key-person") && s.includes("Concentrated"); })'));
+  expect('jira: concentration finds Cloud Migration Kubernetes on Marta', await b.eval('concentration().some(c => c.pid === "prj_cloud_migration" && c.sid === "skl_kubernetes" && c.person === "per_01")'));
+  await b.select('#jr-project', 'prj_iso_27001_certification');
+  const gdpr = await b.eval('(() => { const w = WI.find(w => w.project_id === "prj_iso_27001_certification" && !w.assignee_id && (wiSkills.get(w.id) || []).includes("skl_gdpr_compliance")); return { key: w.external_ref, top: suggestFor(w)[0].p.full_name }; })()');
+  expect('jira: unassigned GDPR ticket suggests the real expert', gdpr.top === 'Henrik Solberg', JSON.stringify(gdpr));
+  expect('jira: blocked ticket is flagged', await b.eval('WI.some(w => w.blocked && signalsOf(w).some(s => s.text === "Blocked"))'));
+  await b.click('#jr-sync'); await b.waitFor('/tickets · /.test(document.querySelector("#jr-steps").textContent) || document.querySelector("#jr-sync").textContent.length');
+  expect('jira: sync reports what it read', await b.eval('/synced just now/.test(document.querySelector("#jr-conn").textContent)'));
+  const evBefore = await b.eval('D.evidence.length'); await b.click('#jr-apply');
+  expect('jira: apply writes evidence, strengthens claims and proposes new ones without adding skills', await b.eval('D.evidence.length') === evBefore + props.raise + props.nw && await b.eval('D.evidence.filter(e => e.status === "proposed" && e.source_type === "jira").length') === props.nw);
+  expect('jira: applying does not create a skill claim on its own', await b.eval('levelOf("per_10", "skl_aws") === 0'));
+
+  // advisor -> Jira
+  await b.click('#t-usecase'); await b.eval('ucHandle("Zero-downtime multi-region platform")'); await b.waitFor('UC.tpl && !UC.busy');
+  await b.click('#uc-jira-btn');
+  const plan = await b.eval('JSON.stringify(ucJiraPlan())'), pl = JSON.parse(plan);
+  expect('advisor: Jira plan has one story per skill (hire collapsed) with owners from the team', pl.stories.length >= 4 && pl.stories.some(s => s.hiring && !s.assignee_person_id) && pl.stories.some(s => s.assignee_person_id), pl.key + ' ' + pl.stories.length);
+  const pay = await b.eval('JSON.stringify(jiraPayloads(ucJiraPlan()))'), pj = JSON.parse(pay);
+  expect('advisor: payloads match the Jira REST shape', pj.epic.fields.issuetype.name === 'Epic' && pj.epic.fields.description.type === 'doc' && pj.stories.every(s => s.fields.parent.key === '{epic-key}' && s.fields.customfield_10016 > 0 && s.fields.labels.includes('maieutica')) && pj.stories.some(s => s.fields.assignee && /^712020:/.test(s.fields.assignee.accountId)));
+  const wiBefore = await b.eval('D.work_item.length'); await b.click('#uc-jira-create'); await b.waitFor('UC.jira && UC.jira.created');
+  expect('advisor: creating adds the epic + stories to the board and the portfolio', await b.eval('D.work_item.length') === wiBefore + pl.stories.length + 1 && await b.eval('D.projects.some(p => p.status === "proposed" && p.external_ref === UC.jira.created.epic.split("-")[0])'));
+  await b.click('#uc-open-board');
+  expect('advisor: the new tickets show up on the Jira board', await b.eval('document.querySelectorAll("#jr-board .tk").length') === pl.stories.length && await b.eval('document.querySelector("#jr-project").value === UC.projectId'));
+
   // reset
   await b.click('#reset-demo');
   expect('reset restores the demo', await b.eval('D.person.length === 36 && D.project.length === 12'));

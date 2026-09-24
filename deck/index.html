@@ -210,7 +210,7 @@
   <p class="eyebrow">How it works</p>
   <h2>From the systems you have,<br>to answers you can trust.</h2>
   <div class="pipe">
-    <div class="st"><p class="k">Sources</p><h3>Connect</h3><ul><li>HRIS export</li><li>Project tools: Jira, Asana, Azure DevOps</li><li>CVs and profiles</li></ul><p class="foot">No email or chat scraping</p></div>
+    <div class="st"><p class="k">Sources</p><h3>Connect</h3><ul><li>HRIS export</li><li>Jira boards; other Kanban tools by CSV or adapter</li><li>CVs and profiles</li></ul><p class="foot">No email or chat scraping</p></div>
     <div class="st key"><p class="k">Onboarding chat</p><h3>Confirm</h3><ul><li>Skills proposed with the sentence that supports each</li><li>The person edits or removes</li><li>Nothing saved until they agree</li></ul><p class="foot">Evidence and confidence kept</p></div>
     <div class="st"><p class="k">Graph</p><h3>Store</h3><ul><li>Four link tables</li><li>Dated, so history is queryable</li><li>Multi-tenant from day one</li></ul><p class="foot">Postgres, standard SQL</p></div>
     <div class="st"><p class="k">Analyses</p><h3>Compute</h3><ul><li>Gaps and single points of failure</li><li>Network brokers, structural holes</li><li>Cost, complexity, value</li></ul><p class="foot">Deterministic and auditable</p></div>
@@ -327,10 +327,29 @@
   <figure class="win" data-clip="usecase"><div class="top"><i></i><i></i><i></i><span>maieutica · use-case advisor</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/usecase.jpg" src="clips/usecase.mp4"></video></figure>
   <p class="fine">Value assumptions are placeholders: replace with your finance team's numbers.</p>
   <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
-  <aside class="notes">The idea is a multi-region, zero-downtime platform. Kubernetes at expert level exists only in one person who is already at 85 percent, so the advisor recommends one Site Reliability Engineer instead of overloading her. Drag a slider and value, ROI and payback update. Adding it to the portfolio shows it as a dashed bubble; it does not consume anyone's capacity until approved. The advisor also says when an idea is not worth it: the AI copilot scores 0.7x.</aside>
+  <aside class="notes">The idea is a multi-region, zero-downtime platform. Kubernetes at expert level exists only in one person who is already at 85 percent, so the advisor recommends one Site Reliability Engineer instead of overloading her. Drag a slider and value, ROI and payback update. It can also be pushed to Jira as an epic with skill-tagged stories. Adding it to the portfolio shows it as a dashed bubble; it does not consume anyone's capacity until approved. The advisor also says when an idea is not worth it: the AI copilot scores 0.7x.</aside>
 </section>
 
-<!-- 11 · LEAVER -->
+<!-- 11 · JIRA / KANBAN -->
+<section class="slide split" data-title="Jira and Kanban">
+  <div class="copy" style="--c:var(--proj)">
+    <p class="eyebrow"><i style="--c:var(--proj)"></i>Capability · Jira and Kanban</p>
+    <h2>Skills, on the board <em>you already use.</em></h2>
+    <ul class="pts">
+      <li>Reads <b>tickets, assignees, points and labels</b> from Jira. Other Kanban tools by CSV or adapter.</li>
+      <li><b>Signals on the card</b>: key-person risk, work piling up on one person, blockers.</li>
+      <li><b>Suggests who</b> could take an unassigned ticket, from skills and free time.</li>
+      <li><b>Pushes back</b>: a use case becomes an epic with skill-tagged stories.</li>
+    </ul>
+    <div class="stat" style="--c:var(--proj)"><div class="n">60% → 95%</div><p class="l">Marta's planned against observed time on Cloud Migration, from the demo board.</p></div>
+  </div>
+  <figure class="win" data-clip="jira"><div class="top"><i></i><i></i><i></i><span>maieutica · jira / kanban</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/jira.jpg" src="clips/jira.mp4"></video></figure>
+  <p class="fine">Demo runs on a fixture in Jira's REST format. Maieutica reads; it creates tickets only when you press Create.</p>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
+  <aside class="notes">The board is Cloud Migration. Marta's Kubernetes tickets carry Key-person and Concentrated signals: three of the four open Kubernetes tickets sit with her. An unassigned ticket gets suggested assignees with skill fit and free time. On the ISO board, the unassigned GDPR ticket points to the only GDPR expert. Sync reads the board; the evidence panel proposes skills seen in work, but new skills wait for the person to confirm. Then the advisor turns the multi-region proposal into an epic and stories with owners suggested from the team, and they appear on the board. In this demo nothing leaves the page; the connector follows Jira Cloud REST v3 and is tested against a fake transport, so verify field ids on your own instance.</aside>
+</section>
+
+<!-- 12 · LEAVER -->
 <section class="slide split" data-title="If someone leaves">
   <div class="copy" style="--c:var(--proj)">
     <p class="eyebrow"><i style="--c:var(--proj)"></i>Capability · Succession</p>
@@ -388,7 +407,7 @@
     <div class="lay llm"><div><p class="k">Model</p><h3>Explain</h3></div><p>Claude today. A local model later, behind one provider interface. It calls the analyses as tools and writes the prose.</p></div>
     <div class="lay"><div><p class="k">Analyses</p><h3>Compute</h3></div><p>SQL views and graph metrics: gaps, betweenness, structural holes, economics, team building.</p></div>
     <div class="lay"><div><p class="k">Graph</p><h3>Store</h3></div><p>Postgres. Four link tables with dates, sources and confidence. Multi-tenant. Standard interchange files.</p></div>
-    <div class="lay"><div><p class="k">Ingestion</p><h3>Connect</h3></div><p>HRIS, Jira, Asana, Azure DevOps, CVs. Every importer produces the same table files.</p></div>
+    <div class="lay"><div><p class="k">Ingestion</p><h3>Connect</h3></div><p>HRIS, Jira boards, Kanban CSV exports and CVs. Every importer produces the same table files.</p></div>
   </div>
   <div class="side">
     <h3>Deployment options</h3>
@@ -405,7 +424,7 @@
   <p class="eyebrow">Proposed pilot</p>
   <h2>One business unit. <em>Twelve weeks.</em></h2>
   <div class="plan">
-    <div class="ph" style="--c:var(--proj)"><p class="w">Weeks 1–2</p><h3>Connect</h3><ul><li>Import HRIS export and project data</li><li>Agree the skill taxonomy</li><li>Set access roles with HR and legal</li></ul></div>
+    <div class="ph" style="--c:var(--proj)"><p class="w">Weeks 1–2</p><h3>Connect</h3><ul><li>Connect the HRIS export and your Jira boards</li><li>Agree the skill taxonomy</li><li>Set access roles with HR and legal</li></ul></div>
     <div class="ph" style="--c:var(--pers)"><p class="w">Weeks 3–6</p><h3>Onboard</h3><ul><li>Onboarding chat for the unit (50–300 people)</li><li>People confirm their own profiles</li><li>First skills and network map</li></ul></div>
     <div class="ph" style="--c:var(--goal)"><p class="w">Weeks 7–12</p><h3>Decide</h3><ul><li>Gap and portfolio review with leadership</li><li>Succession map for critical roles</li><li>Use-case advisor on live initiatives</li></ul></div>
   </div>

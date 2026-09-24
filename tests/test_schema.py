@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LOAD_ORDER = ["tenant", "cost_band", "org_unit", "person", "skill", "skill_alias", "project", "goal",
-              "person_skill", "person_project", "project_skill", "project_goal",
+              "person_skill", "person_project", "project_skill", "project_goal", "external_identity", "work_item", "work_item_skill",
               "hiring_need", "person_aspiration", "evidence"]
 
 
@@ -68,6 +68,11 @@ class SchemaTest(unittest.TestCase):
         under = {n for n, v in roi.items() if v < 1.25}
         self.assertEqual(under, {"Warehouse Automation Pilot", "Finance Close Automation",
                                  "Mobile Driver App", "Hackathon Tooling"})
+
+    def test_board_tables_load_and_link(self):
+        self.assertGreater(self.db.execute("SELECT COUNT(*) FROM work_item WHERE item_type <> 'Epic'").fetchone()[0], 100)
+        marta = self.db.execute("SELECT open_points FROM v_person_project_points WHERE person_id = 'per_01' AND project_id = 'prj_cloud_migration'").fetchone()
+        self.assertGreater(marta["open_points"], 0)
 
     def test_aliases_resolve_to_skills(self):
         n = self.db.execute("SELECT COUNT(*) FROM skill_alias a JOIN skill s ON s.id = a.skill_id").fetchone()[0]

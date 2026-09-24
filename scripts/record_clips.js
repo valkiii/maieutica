@@ -1,5 +1,5 @@
 // Records short, real screen clips of the explorer for the pitch deck (headless Chrome + ffmpeg).
-// Run:  node scripts/record_clips.js [clip ...]      clips: layers networks gaps econ leaver onboard usecase
+// Run:  node scripts/record_clips.js [clip ...]      clips: layers networks gaps econ leaver onboard usecase jira
 const path = require('path');
 const fs = require('fs');
 const { launch, sleep } = require('./cdp.js');
@@ -107,6 +107,32 @@ const CLIPS = {
       await b.click('#ob-save', { pause: 300 });
       await b.waitFor('OB.saved === true'); await sleep(1600);
       await b.scrollTo(640, 1600); await sleep(2600);
+    });
+    return [r, b];
+  },
+  async jira() {
+    const b = await open('jira', 185, 0.5);
+    const r = await b.record(file('jira.mp4'), async () => {
+      await sleep(1000);
+      await b.click('#jr-board .tk[data-k="CLOUD-2"]', { pause: 2000 });
+      await b.shot(file('jira.jpg'));
+      await b.click('#jr-board .tk[data-k="CLOUD-18"]', { pause: 2200 });
+      await b.select('#jr-project', 'prj_iso_27001_certification'); await sleep(900);
+      const gdpr = await b.eval('WI.find(w => w.project_id === "prj_iso_27001_certification" && !w.assignee_id && (wiSkills.get(w.id) || []).includes("skl_gdpr_compliance")).external_ref');
+      await b.click(`#jr-board .tk[data-k="${gdpr}"]`, { pause: 2200 });
+      await b.click('#jr-sync', { pause: 300 });
+      await b.waitFor('/tickets · /.test(document.querySelector("#jr-steps").textContent)'); await sleep(900);
+      await b.scrollTo(700, 1200); await sleep(1500);
+      await b.click('#jr-apply', { pause: 1800 });
+      await b.scrollTo(0, 700); await sleep(300);
+      await b.click('#t-usecase', { pause: 300 });
+      await b.waitFor('document.querySelector("#uc-quick .qbtn")'); await sleep(500);
+      await b.click('#uc-quick .qbtn:nth-child(3)', { pause: 300 });
+      await b.waitFor('UC.tpl && !UC.busy'); await sleep(1200);
+      await b.click('#uc-jira-btn', { pause: 1300 });
+      await b.scrollTo(1500, 1200); await sleep(1400);
+      await b.click('#uc-jira-create', { pause: 1600 });
+      await b.click('#uc-open-board', { pause: 2600 });
     });
     return [r, b];
   },

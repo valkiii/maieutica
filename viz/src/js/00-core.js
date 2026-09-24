@@ -39,6 +39,7 @@ function buildIndexes() {
   objectives = D.goals.filter(g => g.level === 'objective');
   SS = new Map(D.skills.map(s => [s.id, skillStats(s.id)]));
   ECON = new Map(D.projects.map(j => [j.id, projectEconomics(j)]));
+  indexWork();
 }
 
 const unitColor = id => `var(--d${unitIndex.get(id) + 1})`;
