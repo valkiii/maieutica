@@ -1,4 +1,5 @@
 <title>Maieutica Pitch Deck</title>
+<link rel="icon" type="image/png" href="assets/logo-64.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -33,20 +34,20 @@
   h2 em { font-style: normal; color: var(--c, var(--pers)); }
   .lead { color: var(--ink2); font-size: 19px; line-height: 1.5; margin-top: 16px; max-width: 34em; text-wrap: pretty; }
   .sfoot { position: absolute; left: 72px; right: 72px; bottom: 26px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink3); letter-spacing: .06em; }
-  .sfoot b { font-family: var(--font-display); font-weight: 700; color: var(--ink2); letter-spacing: 0; font-size: 13px; }
+  .sfoot b { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; color: var(--ink2); letter-spacing: 0; font-size: 13px; }
+  .mk { width: 18px; height: 18px; border-radius: 5px; display: block; }
   .fine { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink3); letter-spacing: .02em; }
   .notes { display: none; }
 
   /* ---- cover ---- */
   .cover { padding: 0; }
-  .cover .copy { position: absolute; left: 72px; top: 150px; width: 520px; }
+  .cover .copy { position: absolute; left: 72px; top: 170px; width: 520px; }
   .cover h1 { font-family: var(--font-display); font-weight: 700; font-size: 104px; line-height: .95; letter-spacing: -0.04em; }
   .cover .tag { font-family: var(--font-display); font-weight: 500; font-size: 30px; line-height: 1.2; letter-spacing: -0.015em; margin-top: 26px; color: var(--ink); text-wrap: balance; }
   .cover .tag span { color: var(--ink2); }
   .cover .etym { margin-top: 34px; color: var(--ink3); font-size: 15px; max-width: 30em; line-height: 1.5; }
   .cover .etym b { color: var(--ink2); font-weight: 500; }
-  .cover .bar { position: absolute; left: 72px; top: 64px; display: flex; gap: 8px; }
-  .cover .bar i { width: 26px; height: 6px; border-radius: 3px; }
+  .hero-mark { position: absolute; left: 72px; top: 52px; width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.06); }
 
   /* ---- window frame for clips ---- */
   .win { position: relative; background: #ECEFF3; border-radius: 10px; overflow: hidden; border: 1px solid #2B3B4C; box-shadow: 0 28px 70px -24px rgba(0,0,0,.75); cursor: zoom-in; }
@@ -169,14 +170,14 @@
 
 <!-- 1 · COVER -->
 <section class="slide cover on" data-title="Cover">
-  <div class="bar" aria-hidden="true"><i style="background:var(--goal)"></i><i style="background:var(--proj)"></i><i style="background:var(--pers)"></i><i style="background:var(--skill)"></i></div>
+  <img class="hero-mark" src="assets/logo-256.png" alt="Maieutica logo">
   <div class="copy">
     <h1>Maieutica</h1>
     <p class="tag">See the skills, connections and strategy <span>your company already has.</span></p>
     <p class="etym"><b>Maieutics</b> is the Socratic art of drawing out what someone already knows. Maieutica does it for an organisation: one map of goals, projects, people and skills.</p>
   </div>
   <figure class="win" style="position:absolute;right:-70px;top:92px;width:760px;transform:rotate(0deg)" data-clip="layers"><div class="top"><i></i><i></i><i></i><span>maieutica · the four layers</span></div><video muted loop playsinline preload="metadata" poster="clips/layers.jpg" src="clips/layers.mp4"></video></figure>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Open with the one-line promise: your company already contains the answers to who can do what and what matters. Maieutica draws it out. The name comes from Socrates' method. Everything you see is a synthetic demo company of 36 people.</aside>
 </section>
 
@@ -190,7 +191,7 @@
     <div style="--c:var(--proj)"><i class="dot"></i><h3>Work drifts away from strategy.</h3><p>Teams are busy. Which projects serve which goals, and what they cost, is anyone's guess.</p><p class="ex">Effort without a home</p></div>
     <div style="--c:var(--goal)"><i class="dot" style="border-radius:3px"></i><h3>A resignation triggers a copy-paste.</h3><p>The replacement job description is last year's, not what the person actually did.</p><p class="ex">Backfilling the past</p></div>
   </div>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Four familiar pains. None needs new data collection to fix: the information exists in HR systems, project tools and people's heads. It is just not connected. Pause on the fourth: job descriptions copied from the past.</aside>
 </section>
 
@@ -200,7 +201,7 @@
   <h2>One graph, four layers, <em>every link explained.</em></h2>
   <p class="lead" style="max-width:62em">Strategy sits on top, skills at the bottom. Projects and people are the bridge. Each link carries a level, a source and a date.</p>
   <div class="layers-fig" id="layers-fig"></div>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Walk the layers top to bottom. Goals: what the company wants. Projects: how it pursues it. People: who does the work. Skills: what they can do. Only four link tables are stored; everything else, like the social network and the analyses, is computed from them so it can never disagree with the source.</aside>
 </section>
 
@@ -216,7 +217,7 @@
     <div class="st"><p class="k">Interfaces</p><h3>Ask</h3><ul><li>Dashboard</li><li>Use-case advisor chat</li><li>Later: Teams and Slack</li></ul><p class="foot">Claude today, local model later</p></div>
   </div>
   <p class="pipe-note">The AI <b>never edits the graph on its own</b> and never answers from memory: it calls the same analyses you see on screen, then explains the result.</p>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Emphasise the green stage. The person confirms every claim; the model only proposes. And the chat assistant does not invent numbers about your people: it calls deterministic analyses. That is what makes the answers auditable, and cheap to run.</aside>
 </section>
 
@@ -234,7 +235,7 @@
     <div class="stat"><div class="n">3 → 1</div><p class="l">single points of failure after one new colleague confirms their CV in the demo.</p></div>
   </div>
   <figure class="win" data-clip="onboarding"><div class="top"><i></i><i></i><i></i><span>maieutica · onboarding chat</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/onboarding.jpg" src="clips/onboarding.mp4"></video></figure>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Watch the flow: the sample CV is read, skills appear with their evidence, the person removes one wrong claim, answers three short questions chosen because of a company gap, and saves. Then the gaps view updates. In the demo the reading runs locally in the page; in the product an LLM reads the CV and returns the same structure with the same confirm step.</aside>
 </section>
 
@@ -252,7 +253,7 @@
   </div>
   <figure class="win" data-clip="layers"><div class="top"><i></i><i></i><i></i><span>maieutica · the four layers</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/layers.jpg" src="clips/layers.mp4"></video></figure>
   <p class="fine">Synthetic demo company: 36 people, 12 projects, 27 skills.</p>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Marta Lindqvist: two projects, and the only Kubernetes expert. Kubernetes shows a single-point-of-failure badge. Then a goal, Earn enterprise trust, and finally Hackathon Tooling, the dashed project that serves no goal.</aside>
 </section>
 
@@ -270,7 +271,7 @@
   </div>
   <figure class="win" data-clip="networks"><div class="top"><i></i><i></i><i></i><span>maieutica · networks</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/networks.jpg" src="clips/networks.mp4"></video></figure>
   <p class="fine">Betweenness, effective size and constraint per node, on every layer and on the combined graph.</p>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Select Diego Ortiz: the panels for use cases and skills light up his linked nodes. His panel shows betweenness rank 1 and how many structural holes he spans. Then switch to overlap, and remove the skills layer. Two use cases, Cloud Migration and API Platform, compete for the same three people.</aside>
 </section>
 
@@ -287,7 +288,7 @@
     <div class="stat" style="--c:var(--skill)"><div class="n">3</div><p class="l">skills each held up by one expert: Kubernetes, Cybersecurity, GDPR. The trust goal is the most exposed.</p></div>
   </div>
   <figure class="win" data-clip="gaps"><div class="top"><i></i><i></i><i></i><span>maieutica · gaps &amp; alignment</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/gaps.jpg" src="clips/gaps.mp4"></video></figure>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">The risk is expressed in strategy terms: not just Kubernetes is thin, but the objective Earn enterprise trust rests on 57 percent fragile skills. Three people are fully booked, so any new ask lands on someone with no slack.</aside>
 </section>
 
@@ -306,7 +307,7 @@
   </div>
   <figure class="win" data-clip="economics"><div class="top"><i></i><i></i><i></i><span>maieutica · portfolio economics</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/economics.jpg" src="clips/economics.mp4"></video></figure>
   <p class="fine">Illustrative values and blended cost bands, not individual salaries.</p>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">The chart plots cost against risk-adjusted value; bubble size is complexity. The Warehouse pilot takes 2.6 FTE for a 0.4x return. Toggle to FTE-months to see effort rather than euros. The panel on the right suggests what to do for each under-optimised project. Costs use a rate card by seniority band, never individual pay.</aside>
 </section>
 
@@ -325,7 +326,7 @@
   </div>
   <figure class="win" data-clip="usecase"><div class="top"><i></i><i></i><i></i><span>maieutica · use-case advisor</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/usecase.jpg" src="clips/usecase.mp4"></video></figure>
   <p class="fine">Value assumptions are placeholders: replace with your finance team's numbers.</p>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">The idea is a multi-region, zero-downtime platform. Kubernetes at expert level exists only in one person who is already at 85 percent, so the advisor recommends one Site Reliability Engineer instead of overloading her. Drag a slider and value, ROI and payback update. Adding it to the portfolio shows it as a dashed bubble; it does not consume anyone's capacity until approved. The advisor also says when an idea is not worth it: the AI copilot scores 0.7x.</aside>
 </section>
 
@@ -343,7 +344,7 @@
   </div>
   <figure class="win" data-clip="leaver"><div class="top"><i></i><i></i><i></i><span>maieutica · if someone leaves</span><em>click to enlarge</em></div><video muted loop playsinline preload="metadata" poster="clips/leaver.jpg" src="clips/leaver.mp4"></video></figure>
   <p class="fine">Restricted view: who is critical is sensitive, so access is role-based.</p>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Marta Lindqvist is leaving. She is the last Kubernetes expert. The best internal match covers about 73 percent of what she does, but has no free time, so the real question becomes who backfills that person. The profile on the right is built from her real projects, skills and collaborators; Claude turns it into prose and the manager confirms.</aside>
 </section>
 
@@ -357,7 +358,7 @@
     <div class="case" style="--c:var(--warn)"><p class="tab">Economics · Portfolio review</p><p class="q">Where does our capacity actually go?</p><p><b>Maieutica shows</b> a quarter of project FTE on work that returns little or has no goal.</p><p class="out">Re-deploy 5.5 FTE toward work that pays back, before budget season.</p></div>
     <div class="case" style="--c:var(--pers)"><p class="tab">Networks · Reorg or integration</p><p class="q">Who holds the company together?</p><p><b>Maieutica shows</b> the brokers, four unit pairs that never share a project, and projects competing for the same people.</p><p class="out">Design the reorg or merger around the real network, not the org chart.</p></div>
   </div>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Each card is a question a leader asked this quarter, mapped to a view you just saw. Stress that these numbers come from the demo data; in the pilot they come from theirs.</aside>
 </section>
 
@@ -374,7 +375,7 @@
     <div class="tile" style="--c:var(--pers)"><h3><i></i>Rate card, not salaries</h3><p>Cost uses blended bands per seniority. Individual pay is never stored or needed.</p></div>
   </div>
   <p class="trust-foot">Designed for GDPR and for the EU AI Act's requirements on employment-related systems: human oversight, logging, transparency. Confirm the classification with your counsel.</p>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">This is the slide that wins over HR, legal and the works council. Staffing tools that influence work allocation can fall in a high-risk category in the EU, so oversight and explainability are designed in, not bolted on. Recommend legal review as part of the pilot.</aside>
 </section>
 
@@ -395,7 +396,7 @@
     <div class="opt"><b>Your private cloud</b><span>Same product inside your tenancy.</span></div>
     <div class="opt"><b>On-premises with a local model</b><span>For strict data-residency. No data leaves the building.</span></div>
   </div>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Address IT and security. The graph is small: a 2,000-person company is about ten thousand nodes, so plain Postgres is enough. The model sits behind an adapter, which is why moving to a local model is a configuration change, not a rewrite. Teams and Slack are roadmap items, not in the demo.</aside>
 </section>
 
@@ -415,13 +416,13 @@
     <div><b>Decisions changed</b><span>Staffing or portfolio choices made differently</span></div>
     <div><b>Trust</b><span>Employees' own rating of accuracy and fairness</span></div>
   </div>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Keep the ask small and concrete: one unit, twelve weeks, four success measures agreed up front. The fourth, employee trust, is deliberate: if people do not believe their profile, the product does not work.</aside>
 </section>
 
 <!-- 16 · CLOSE -->
 <section class="slide close" data-title="Close">
-  <div class="cover bar" style="position:absolute;left:72px;top:64px;display:flex;gap:8px" aria-hidden="true"><i style="width:26px;height:6px;border-radius:3px;background:var(--goal)"></i><i style="width:26px;height:6px;border-radius:3px;background:var(--proj)"></i><i style="width:26px;height:6px;border-radius:3px;background:var(--pers)"></i><i style="width:26px;height:6px;border-radius:3px;background:var(--skill)"></i></div>
+  <img class="hero-mark" src="assets/logo-256.png" alt="Maieutica logo">
   <figure class="win" data-clip="networks" style="position:absolute;right:-120px;top:150px;width:640px"><div class="top"><i></i><i></i><i></i><span>maieutica · networks</span></div><video muted loop playsinline preload="metadata" poster="clips/networks.jpg" src="clips/networks.mp4"></video></figure>
   <div class="copy" style="width:610px">
     <h2>Start with one unit.<br><em>See what you already know.</em></h2>
@@ -432,7 +433,7 @@
       <div style="--c:var(--goal)"><b>2 weeks</b><span>to your first map</span></div>
     </div>
   </div>
-  <footer class="sfoot"><b>Maieutica</b><span class="n"></span></footer>
+  <footer class="sfoot"><b><img class="mk" src="assets/logo-64.png" alt="">Maieutica</b><span class="n"></span></footer>
   <aside class="notes">Close on the low-risk ask. Nothing is written without consent, and they see value within two weeks.</aside>
 </section>
 

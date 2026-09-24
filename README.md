@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo-256.png" width="96" alt="Maieutica logo"></p>
+
 # Maieutica
 
 *Draw out what your organisation already knows.*
